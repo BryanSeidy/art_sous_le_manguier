@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green-deep: #1a2f1c;
+  --mango: #f4a261;
+  --earth: #8b4513;
+  --cream: #f4f1de;
+  --indigo: #1d3557;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--green-deep); }
+body {
+  background-image:
+    linear-gradient(145deg, rgba(13, 20, 14, 0.96), rgba(26, 47, 28, 0.94)),
+    radial-gradient(circle at 10% 20%, rgba(244, 162, 97, 0.14), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(29, 53, 87, 0.2), transparent 45%);
+}
+
+.grain {
+  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.organic-card {
+  border: 1px solid rgba(244, 241, 222, 0.16);
+  background: linear-gradient(160deg, rgba(244,241,222,0.08), rgba(139,69,19,0.18));
+  backdrop-filter: blur(10px);
+  border-radius: 36% 64% 59% 41% / 36% 32% 68% 64%;
+  box-shadow: 0 15px 32px rgba(0,0,0,0.35);
+}
+
+.mango-button {
+  background: linear-gradient(135deg, #f4a261, #d87d39);
+  color: #1a2f1c;
+  border-radius: 9999px;
+  padding: 0.8rem 1.25rem;
+  font-weight: 700;
+}
+
+a, button { cursor: none !important; }
