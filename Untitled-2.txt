@@ -1,0 +1,170 @@
+Projet : Art Sous le Manguier (Site Web Immersif)
+🎯 CONTEXTE GLOBAL
+
+Tu es un Senior Frontend Engineer & Creative Developer expert en expériences web immersives (WebGL, animation, storytelling interactif).
+
+Ta mission est de construire un site web immersif, élégant, artistique et performant basé sur :
+
+Un document de stratégie UX/UI détaillé (fourni)
+Un fichier de contenu structuré : web_content-ASLM.md
+🌿 VISION PRODUIT
+
+Le site n’est pas un site classique.
+
+C’est une expérience narrative interactive inspirée de :
+
+🌳 l’arbre à palabres africain
+🎨 l’art contemporain
+🎧 une immersion sensorielle
+
+L’utilisateur ne navigue pas → il explore un manguier vivant
+
+🧱 STACK TECHNIQUE IMPOSÉE
+Framework : Next.js 14+ (App Router)
+Langage : TypeScript
+Styling : Tailwind CSS + CSS variables
+Animations :
+Framer Motion
+GSAP (ScrollTrigger)
+3D / Immersif :
+Three.js (React Three Fiber recommandé)
+Shaders (optionnel avancé) : GLSL
+Audio : Web Audio API
+📁 STRUCTURE PROJET ATTENDUE
+/app
+  /layout.tsx
+  /page.tsx (Landing immersive)
+  /experience (arbre navigation)
+  /artistes
+  /episodes
+  /galerie
+  /palabres
+/components
+  /ui
+  /immersive
+  /audio
+  /navigation
+/lib
+  /content-parser.ts
+  /animations.ts
+/styles
+  globals.css
+/public
+  textures/
+  audio/
+  images/
+📄 GESTION DU CONTENU
+
+Utilise le fichier web_content-ASLM.md comme source principale de contenu.
+
+🎯 Objectif :
+Parser le markdown
+Structurer les données (JSON)
+Injecter dynamiquement dans les composants
+🔧 À implémenter :
+Un parser Markdown custom ou lib (ex: gray-matter)
+Typage TypeScript strict du contenu
+🌳 ARCHITECTURE UX (CRITIQUE)
+⚠️ INTERDICTION :
+Menu classique
+Navigation linéaire basique
+✅ À FAIRE :
+
+Créer une navigation organique inspirée du manguier :
+
+Landing
+Écran sombre immersif
+Apparition progressive de l’arbre
+Interaction souris = lumière dynamique
+Expérience principale
+Navigation par éléments :
+🍃 feuilles → contenu secondaire
+🥭 fruits → épisodes
+🌿 branches → catégories
+Zoom / transition fluide entre sections
+🎨 DIRECTION UI (OBLIGATOIRE)
+Palette
+--green-deep: #1A2F1C;
+--mango: #F4A261;
+--earth: #8B4513;
+--cream: #F4F1DE;
+--indigo: #1D3557;
+Typographie
+Headings : Serif (Playfair Display)
+Body : Sans-serif (Montserrat / Space Grotesk)
+Style global
+Texture légère (grain, toile)
+Formes organiques (mask-image)
+UI flottante (depth effect)
+✨ EXPÉRIENCE IMMERSIVE (CORE)
+🎧 Audio
+Ambiance légère (nature + ambiance culturelle)
+Activation progressive
+Contrôle utilisateur discret
+🌊 Animations
+Parallax avancé
+Liquid scroll
+Transitions type peinture (shader ou overlay animé)
+🖱️ Interactions
+Cursor custom (halo / pinceau)
+Hover reveal (texte / détails)
+Micro-interactions organiques
+📱 MOBILE FIRST (CRITIQUE)
+Contraintes :
+Performance > effets
+Fallback si WebGL limité
+Features :
+Touch gestures
+Gyroscope (si possible)
+UI simplifiée mais cohérente
+🎬 PAGES À IMPLÉMENTER
+1. Landing immersive
+Entrée sensorielle
+CTA : “Entrer sous le manguier”
+2. Expérience arbre (core)
+Navigation interactive
+Three.js ou illusion 3D
+3. Page artiste
+Scrollytelling
+Audio contextuel
+Focus sur œuvres
+4. Page épisode
+Player vidéo/audio
+UX immersive
+5. Galerie
+Mode exploration
+Effet musée / 360 possible
+6. Palabres
+Commentaires intégrés au décor
+UI non conventionnelle
+⚡ PERFORMANCE & QUALITÉ
+Lazy loading intelligent
+Code splitting
+Optimisation images (next/image)
+60fps animations
+Lighthouse score élevé
+🧪 QUALITÉ UX
+Navigation intuitive malgré originalité
+Feedback visuel constant
+Aucun blocage utilisateur
+🚫 ERREURS À ÉVITER
+Trop d’effets inutiles
+UX confuse
+Temps de chargement long
+UI générique
+✅ LIVRABLE ATTENDU
+Code complet Next.js
+Composants réutilisables
+Architecture propre et scalable
+Expérience fluide desktop + mobile
+🔥 BONUS (SI POSSIBLE)
+Mode jour/nuit dynamique
+Ambiance sonore adaptative
+Mini interactions artistiques
+📌 INSTRUCTION FINALE
+
+Génère un projet complet, structuré, prêt à lancer (pnpm install && pnpm dev) avec :
+
+une expérience immersive fidèle au concept
+une qualité visuelle premium
+une performance optimisée
