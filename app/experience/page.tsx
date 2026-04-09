@@ -1,23 +1,26 @@
-import { TreeNav } from "@/components/navigation/tree-nav";
-import { SectionBlock } from "@/components/ui/section-block";
-import { parseWebContent } from "@/lib/content-parser";
+import { MangoScene } from "@/components/immersive/mango-scene";
 import { LiquidScroll } from "@/components/immersive/liquid-scroll";
+import { TreeNav } from "@/components/navigation/tree-nav";
+import { Button } from "@/components/ui/button";
 
 export default function ExperiencePage() {
-  const content = parseWebContent();
   return (
-    <main className="grain min-h-screen px-5 py-16 md:px-10">
+    <main className="section-spacing">
       <LiquidScroll />
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8">
-        <header>
-          <h1 className="font-heading text-5xl text-mango">Le manguier vivant</h1>
-          <p className="mt-3 max-w-2xl text-cream/80">Explorez par branches, fruits et feuilles. Chaque interaction dévoile un nouveau récit.</p>
-        </header>
-        <TreeNav />
-        <div className="grid gap-6 md:grid-cols-2">
-          {content.sections.slice(1, 5).map((section) => (
-            <SectionBlock key={section.id} title={section.title} body={section.body} />
-          ))}
+      <div className="container-page grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-start">
+        <section className="surface-card p-6 md:p-8">
+          <h1 className="font-heading text-4xl md:text-5xl">Expérience immersive guidée</h1>
+          <p className="mt-4 text-[var(--text-muted)]">Explorez le manguier avec une navigation visible: branches pour les rubriques, fruits pour les épisodes, feuilles pour les contenus courts.</p>
+          <div className="mt-6">
+            <Button href="/accueil">Retour aux repères</Button>
+          </div>
+          <div className="mt-8">
+            <TreeNav />
+          </div>
+        </section>
+        <div className="space-y-3">
+          <div className="md:hidden surface-card p-6"><p className="text-sm text-[var(--text-muted)]">Visualisation immersive allégée sur mobile pour privilégier la performance.</p></div>
+          <div className="hidden md:block"><MangoScene /></div>
         </div>
       </div>
     </main>

@@ -1,17 +1,22 @@
+import { Button } from "@/components/ui/button";
+
 export default function GaleriePage() {
   return (
-    <main className="min-h-screen px-5 py-16 md:px-10">
-      <section className="mx-auto max-w-6xl">
-        <h1 className="font-heading text-5xl text-mango">Galerie immersive</h1>
-        <p className="mt-3 max-w-2xl text-cream/80">Mode exploration inspiré d'un parcours musée avec profondeur, inertie et ambiance lumineuse.</p>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="organic-card aspect-[4/5] p-4">
-              <div className="h-full w-full rounded-[2rem] border border-cream/20 bg-gradient-to-br from-indigo/40 to-earth/40" />
-            </div>
+    <main className="section-spacing">
+      <div className="container-page space-y-8">
+        <header className="space-y-3">
+          <h1 className="font-heading text-4xl md:text-5xl">Galerie</h1>
+          <p className="max-w-3xl text-[var(--text-muted)]">Une exploration visuelle sobre: effets légers, lisibilité élevée et parcours contrôlé.</p>
+          <Button href="/artistes">Découvrir les œuvres</Button>
+        </header>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <article key={item} className="surface-card p-3">
+              <div className="aspect-[4/5] rounded-xl border border-cream/20 bg-gradient-to-br from-indigo/50 to-earth/30" />
+            </article>
           ))}
         </div>
-      </section>
+      </div>
     </main>
   );
 }

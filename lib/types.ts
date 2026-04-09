@@ -1,11 +1,15 @@
-export type ContentSection = {
-  id: string;
+export type ContentBlock = {
   title: string;
-  body: string[];
+  paragraphs: string[];
 };
 
-export type ParsedContent = {
-  hero: ContentSection;
-  sections: ContentSection[];
-  fruits: { title: string; detail: string }[];
+export type SiteContent = {
+  hero: {
+    title: string;
+    subtitle: string;
+    narrative: string[];
+    ctaPrimary: string;
+    ctaSecondary: string;
+  };
+  sections: ContentBlock[];
 };
