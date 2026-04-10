@@ -16,13 +16,22 @@ const base =
   "focus-ring inline-flex min-h-12 items-center justify-center rounded-full px-6 text-sm font-semibold transition duration-200";
 
 const variants: Record<NonNullable<ButtonProps["variant"]>, string> = {
-  primary: "bg-mango text-[#1a2f1c] hover:brightness-95 active:scale-[0.98] disabled:opacity-40",
-  secondary: "border border-cream/45 bg-transparent text-cream hover:bg-cream/10 active:bg-cream/20 disabled:opacity-40",
-  ghost: "text-cream/85 hover:text-cream hover:bg-white/10 active:bg-white/20 disabled:opacity-40",
+  primary: "bg-[#4F5753] text-[#F4F4F4] hover:bg-[#606966] active:scale-[0.98] disabled:opacity-40",
+  secondary: "border border-[#4F5753] bg-transparent text-[#4F5753] hover:bg-[#4F5753] hover:text-[#F4F4F4] active:bg-[#606966] disabled:opacity-40",
+  ghost: "text-[#4F5753] hover:text-[#4F5753] hover:bg-[#4F5753]/10 active:bg-[#4F5753]/20 disabled:opacity-40",
 };
 
 export function Button({ children, href, disabled, variant = "primary", className, ariaLabel, error }: ButtonProps) {
   const classes = cn(base, variants[variant], error && "border border-[var(--error)]", className);
+
+  if (href?.startsWith("#")) {
+    return (
+      <a href={href} className={classes} aria-label={ariaLabel} aria-disabled={disabled}>
+        {children}
+      </a>
+    );
+  }
+
   if (href) {
     return (
       <Link href={href} className={classes} aria-label={ariaLabel} aria-disabled={disabled}>
