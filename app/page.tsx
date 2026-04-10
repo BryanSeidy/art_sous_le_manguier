@@ -52,9 +52,12 @@ const useIntersection = (threshold = 0.1) => {
 const useMousePosition = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isClicking, setIsClicking] = useState(false);
 
   useEffect(() => {
     const updatePosition = (e: MouseEvent) => setPosition({ x: e.clientX, y: e.clientY });
+    const handleMouseDown = () => setIsClicking(true);
+    const handleMouseUp = () => setIsClicking(false);
 
     const handleMouseOver = (e: MouseEvent) => {
       if ((e.target as Element | null)?.closest('a, button, .hover-trigger')) setIsHovering(true);
@@ -66,15 +69,19 @@ const useMousePosition = () => {
     window.addEventListener('mousemove', updatePosition);
     window.addEventListener('mouseover', handleMouseOver);
     window.addEventListener('mouseout', handleMouseOut);
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
 
     return () => {
       window.removeEventListener('mousemove', updatePosition);
       window.removeEventListener('mouseover', handleMouseOver);
       window.removeEventListener('mouseout', handleMouseOut);
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
-  return { ...position, isHovering };
+  return { ...position, isHovering, isClicking };
 };
 
 const useMediaQuery = (query: string) => {
@@ -158,15 +165,15 @@ const FadeIn = ({
   );
 };
 
-const OrganicStarElement = ({ progress }: { progress: number }) => (
+const OrganicStarElement = ({ progress, mouseX, mouseY }: { progress: number; mouseX: number; mouseY: number }) => (
   <div
     className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 hover-trigger group transition-transform duration-75 ease-linear mix-blend-multiply"
     style={{
-      transform: `rotate(${progress * 60}deg) scale(${1 + progress * 0.15})`,
-      opacity: Math.max(0.1, 0.4 - progress * 0.3),
+      transform: `translate(${(mouseX - 0.5) * 24}px, ${(mouseY - 0.5) * 24}px) rotate(${progress * 120}deg) scale(${1 + progress * 0.3})`,
+      opacity: Math.max(0.25, 0.85 - progress * 0.45),
     }}
   >
-    <svg viewBox="0 0 200 200" className="w-[120vw] h-[120vw] md:w-[60vw] md:h-[60vw] animate-[spin_100s_linear_infinite] transition-all duration-1000 group-hover:blur-[2px] group-hover:scale-105">
+    <svg viewBox="0 0 200 200" className="w-[120vw] h-[120vw] md:w-[60vw] md:h-[60vw] animate-[spin_100s_linear_infinite] transition-all duration-1000 group-hover:blur-[2px] group-hover:opacity-60 group-hover:scale-105">
       <path
         fill="none"
         stroke="#4F5753"
@@ -191,6 +198,8 @@ export default function ArtSousLeManguierApp() {
   const horizontalProgress = useScrollProgress(horizontalRef);
   const mouse = useMousePosition();
   const isDesktop = useMediaQuery('(min-width: 768px)');
+  const mouseXRatio = typeof window !== 'undefined' ? mouse.x / window.innerWidth : 0.5;
+  const mouseYRatio = typeof window !== 'undefined' ? mouse.y / window.innerHeight : 0.5;
 
   const experiences = [
     { tag: 'Exploration', title: 'DANGOA', subtitle: 'Cartographie poétique des quartiers', desc: 'Une exploration artistique où la ville devient une œuvre vivante. Parcours immersifs, déambulations et rencontres spontanées.', img: 'https://images.unsplash.com/photo-1517737286088-7505357dd439?q=80&w=1200', detail: 'Marcher, rencontrer, ressentir.' },
@@ -231,8 +240,9 @@ export default function ArtSousLeManguierApp() {
       `}</style>
 
       <div
-        className={`fixed top-0 left-0 border rounded-full pointer-events-none z-[10000] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ease-out hidden md:flex items-center justify-center mix-blend-difference
-          ${mouse.isHovering ? 'w-16 h-16 bg-[#F4F4F4] border-transparent scale-100' : 'w-6 h-6 border-[#F4F4F4]/60 bg-transparent scale-100'}
+        className={`fixed top-0 left-0 border rounded-full pointer-events-none z-[10000] transform -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ease-out hidden md:flex items-center justify-center mix-blend-difference
+          ${mouse.isHovering ? 'w-16 h-16 bg-[#4F5753] border-transparent scale-[1.8]' : 'w-6 h-6 border-[#F4F4F4]/60 bg-transparent scale-100'}
+          ${mouse.isClicking ? 'scale-[0.9]' : ''}
         `}
         style={{ left: `${mouse.x}px`, top: `${mouse.y}px`, transitionProperty: 'width, height, background-color, border-color, transform' }}
       >
@@ -262,7 +272,7 @@ export default function ArtSousLeManguierApp() {
 
       <section id="hero" ref={heroRef} className="relative h-[150vh]">
         <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center items-center px-6">
-          <OrganicStarElement progress={heroProgress} />
+          <OrganicStarElement progress={heroProgress} mouseX={mouseXRatio} mouseY={mouseYRatio} />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#F4F4F4_80%)] opacity-90 pointer-events-none z-1" />
 
           <div
@@ -298,26 +308,26 @@ export default function ArtSousLeManguierApp() {
         </div>
       </section>
 
-      <section ref={transitionRef} className="relative h-[200vh] bg-[#4F5753]">
+      <section ref={transitionRef} className="relative h-[200vh] bg-[#3E4542]">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] bg-[#7C7C7C] blur-[150px] opacity-10 rounded-full mix-blend-screen" />
 
           <div className="relative z-10 space-y-16 max-w-4xl">
             <p
-              className="serif text-5xl md:text-7xl text-[#F4F4F4]"
-              style={{ opacity: transitionProgress > 0.1 ? 1 : 0, transform: `scale(${transitionProgress > 0.1 ? 1 : 0.95})`, transition: 'all 1.5s cubic-bezier(0.16, 1, 0.3, 1)' }}
+              className="serif text-5xl md:text-7xl text-[#F4F4F4] drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+              style={{ opacity: transitionProgress > 0.05 ? 1 : 0, transform: `scale(${transitionProgress > 0.05 ? 1 : 0.92})`, transition: 'all 1.5s cubic-bezier(0.16, 1, 0.3, 1)' }}
             >
               La ville parle.
             </p>
             <p
-              className="text-[#B0B0B0] text-xl md:text-4xl font-light italic"
-              style={{ opacity: transitionProgress > 0.3 ? 1 : 0, transform: `translateY(${transitionProgress > 0.3 ? 0 : 30}px)`, transition: 'all 1.2s ease-out' }}
+              className="text-[#F4F4F4]/90 text-xl md:text-4xl font-light italic drop-shadow-[0_6px_18px_rgba(0,0,0,0.25)]"
+              style={{ opacity: transitionProgress > 0.2 ? 1 : 0, transform: `translateY(${transitionProgress > 0.2 ? 0 : 30}px)`, transition: 'all 1.2s ease-out' }}
             >
               Et si, cette fois, nous prenions vraiment le temps de l’écouter ?
             </p>
             <p
-              className="text-[#F4F4F4]/80 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto"
-              style={{ opacity: transitionProgress > 0.6 ? 1 : 0, filter: transitionProgress > 0.6 ? 'blur(0)' : 'blur(10px)', transition: 'all 1.5s ease-out' }}
+              className="text-[#F4F4F4]/95 text-lg md:text-2xl font-light leading-relaxed max-w-2xl mx-auto drop-shadow-[0_6px_18px_rgba(0,0,0,0.25)]"
+              style={{ opacity: transitionProgress > 0.45 ? 1 : 0, filter: transitionProgress > 0.45 ? 'blur(0)' : 'blur(10px)', transition: 'all 1.5s ease-out' }}
             >
               Dans chaque rue, chaque visage, chaque silence…<br />
               <span className="text-[#F4F4F4] font-medium mt-6 block">se cache une histoire à révéler.</span>
@@ -348,17 +358,17 @@ export default function ArtSousLeManguierApp() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center max-w-6xl mx-auto relative z-10">
           <FadeIn delay={300} className="animate-float" style={{ animationDelay: '0s' }}>
-            <div className="p-12 border border-[#B0B0B0]/30 bg-white/40 backdrop-blur-md rounded-sm hover:bg-white/80 transition-colors duration-500">
+            <div className="p-12 border border-[#B0B0B0]/30 bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md rounded-sm hover:bg-white/90 transition-all duration-500 shadow-[0_20px_60px_rgba(79,87,83,0.08)] hover:-translate-y-1">
               <h3 className="serif text-3xl text-[#4F5753] mb-4 italic">Chaque quartier<br />devient une île.</h3>
             </div>
           </FadeIn>
           <FadeIn delay={500} className="animate-float" style={{ animationDelay: '-2s' }}>
-            <div className="p-12 border border-[#B0B0B0]/30 bg-white/40 backdrop-blur-md rounded-sm hover:bg-white/80 transition-colors duration-500">
+            <div className="p-12 border border-[#B0B0B0]/30 bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md rounded-sm hover:bg-white/90 transition-all duration-500 shadow-[0_20px_60px_rgba(79,87,83,0.08)] hover:-translate-y-1">
               <h3 className="serif text-3xl text-[#4F5753] mb-4 italic">Chaque rencontre,<br />un pont.</h3>
             </div>
           </FadeIn>
           <FadeIn delay={700} className="animate-float" style={{ animationDelay: '-4s' }}>
-            <div className="p-12 border border-[#B0B0B0]/30 bg-white/40 backdrop-blur-md rounded-sm hover:bg-white/80 transition-colors duration-500">
+            <div className="p-12 border border-[#B0B0B0]/30 bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md rounded-sm hover:bg-white/90 transition-all duration-500 shadow-[0_20px_60px_rgba(79,87,83,0.08)] hover:-translate-y-1">
               <h3 className="serif text-3xl text-[#4F5753] mb-4 italic">Chaque expérience,<br />une trace.</h3>
             </div>
           </FadeIn>
