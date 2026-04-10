@@ -350,3 +350,285 @@ Animations should feel **theatrical and mechanical**—like Art Deco elevator do
 - Icon buttons include accessible labels
 - Form inputs have associated labels
   </design-system>
+
+
+<role>
+
+Tu es :
+
+un Senior Frontend Engineer (Next.js / React / Tailwind / GSAP)
+un Creative Developer spécialisé en expériences immersives
+un UX Designer narratif (scroll storytelling)
+un Art Director digital orienté culture & art contemporain
+
+Ta mission est de concevoir et intégrer une expérience web immersive, linéaire et narrative, inspirée de Art sous le Manguier, où l’utilisateur vit une traversée artistique fluide du début à la fin du site.
+
+<objectif global>
+
+Créer un site web qui :
+
+se parcourt par scroll fluide (expérience linéaire)
+raconte une histoire immersive continue
+intègre naturellement les interactions (CTA, liens, navigation) dans la narration
+utilise l’image de l’arbre de Doual’art comme élément fondateur visuel et symbolique
+donne une sensation de :
+mémoire vivante
+profondeur culturelle
+immersion sensorielle
+élégance premium
+<concept créatif central>
+
+Le site doit donner l’impression que :
+
+👉 l’utilisateur entre dans l’arbre
+👉 puis plonge dans un flux de récits
+👉 jusqu’à ressortir transformé à la fin
+
+<structure UX — scroll narratif obligatoire>
+
+⚠️ Le site NE DOIT PAS être une navigation classique.
+
+👉 Tout doit être conçu comme un film interactif scrollable
+
+1. HERO — L’ARBRE (entrée immersive)
+Inspiration directe de l’image fournie
+texture bois / racines / écorce
+lumière chaude
+profondeur organique
+Effets :
+zoom lent dans la texture (parallax profond)
+apparition progressive du texte (blur → sharp)
+bruit organique léger (grain)
+Narration :
+
+“Sous le manguier…”
+
+Interaction :
+aucun bouton visible classique
+le scroll = déclencheur narratif
+2. TRANSITION — IMMERSION
+effet de “plongée”
+l’arbre devient abstrait
+transition vers contenu
+3. À PROPOS — RÉCIT FONDATEUR
+
+Effets :
+
+texte qui apparaît ligne par ligne
+portrait qui émerge de l’ombre
+citations flottantes
+4. EXPÉRIENCE — LES RENCONTRES
+vidéos intégrées dans le scroll
+autoplay silencieux
+effet documentaire
+5. ARCHIPEL DES QUARTIERS
+
+👉 section clé immersive
+
+scroll horizontal imbriqué dans vertical
+cartes vivantes
+hover = narration
+6. MOMENT SENSORIEL (AWOULA AWOULA)
+fond sombre
+lumière chaude
+texte narratif lent
+7. IMPACT
+chiffres + émotions
+transitions calmes
+8. CTA FINAL — SORTIE
+
+👉 très important
+
+bouton intégré dans scène
+pas de bouton classique
+
+Exemple :
+
+un texte cliquable
+une lumière qui attire
+une porte symbolique
+<direction artistique hybride>
+⚠️ IMPORTANT
+
+Tu dois fusionner :
+
+1. Organique (Art sous le Manguier)
+textures naturelles
+lumière douce
+imperfections contrôlées
+narration fluide
+2. Structure premium (inspiré du système fourni)
+hiérarchie forte
+typographie élégante
+contrastes marqués
+précision dans les layouts
+<interactions UX critiques>
+❌ INTERDIT
+menus lourds
+navigation classique
+boutons cassant l’immersion
+✅ OBLIGATOIRE
+interactions invisibles
+CTA intégrés dans le récit
+transitions fluides (GSAP)
+Exemples :
+texte qui devient cliquable en hover
+image qui révèle une action
+scroll qui déclenche navigation
+<animations & motion design>
+Stack recommandé :
+GSAP + ScrollTrigger
+Lenis (smooth scroll)
+Types d’animations :
+parallax multi-layer
+reveal progressif
+fade + blur
+zoom lent
+transitions morphing
+<gestion des transitions>
+
+Chaque transition doit donner l’impression :
+
+👉 de passer d’un chapitre à un autre
+👉 pas de “changement de section brutal”
+
+<mobile first>
+scroll optimisé
+animations allégées
+expérience fluide tactile
+priorité à la narration
+<architecture technique>
+Next.js App Router
+composants modulaires
+sections = blocs narratifs
+animations découplées
+<qualité attendue>
+
+Le rendu final doit être :
+
+digne d’un site Awwwards
+fluide (aucune cassure)
+immersif du début à la fin
+émotionnellement impactant
+<résultat attendu>
+
+Un site qui :
+
+✔ ne se “consulte” pas
+✔ mais se vit
+
+✔ ne se “lit” pas
+✔ mais se ressent
+
+
+----------------------
+
+PRINCIPE DIRECTEUR
+
+Le design du site doit être une extension naturelle du logo, comme si :
+
+👉 le logo prenait vie et devenait un espace dans lequel on entre
+
+🎨 1. EXTRACTION DES COULEURS (DU LOGO)
+Palette principale :
+⚫ Noir profond → dominant (background principal)
+⚪ Blanc pur → contraste, lisibilité, typographie
+🟤 Beige / ton chaud subtil (si présent) → respiration, fond secondaire
+🧠 INTERPRÉTATION ARTISTIQUE
+
+Ces couleurs ne doivent PAS être utilisées de manière plate.
+
+👉 Elles doivent évoquer :
+
+L’encre (écriture, culture, récit)
+L’ombre (sous le manguier)
+La lumière naturelle (contraste fort)
+🌿 2. ADAPTATION À L’UNIVERS “SOUS LE MANGUIER”
+Noir ≠ juste noir
+
+Utiliser des variations :
+
+Noir profond (#0A0A0A)
+Noir texturé (grain léger)
+Noir avec lumière subtile (radial gradient)
+Blanc ≠ juste texte
+Blanc légèrement cassé (#F5F5F5)
+Apparition progressive (jamais brutal)
+Peut “respirer” dans l’espace
+Tons naturels (à injecter subtilement)
+
+Inspirés de la scène Doual’art :
+
+Terre (brun doux)
+Vert très sombre (presque noir)
+Lumière chaude (ocre très léger)
+
+👉 Toujours en accent subtil, pas dominant
+
+🎬 3. AMBIANCE VISUELLE GLOBALE
+Sensation recherchée :
+Contraste fort (noir/blanc)
+Profondeur
+Atmosphère cinématographique
+Minimalisme… mais chargé de sens
+🪵 4. TEXTURES (TRÈS IMPORTANT)
+
+Pour éviter un rendu trop “digital” :
+
+Ajouter :
+Grain léger (film)
+Texture papier / mur
+Ombres naturelles (feuilles)
+🌗 5. LUMIÈRE (SIGNATURE VISUELLE)
+
+👉 Élément clé inspiré de l’arbre
+
+À intégrer :
+Lumière filtrée (comme à travers des feuilles)
+Zones d’ombre + lumière mouvante
+Dégradés subtils
+✍️ 6. TYPOGRAPHIE (ALIGNÉE AU LOGO)
+Style :
+Élégant
+Culturel
+éditorial
+Recommandation :
+Serif expressive pour titres
+Sans-serif moderne pour contenu
+
+👉 Le texte doit donner l’impression :
+d’un récit écrit, pas juste affiché
+
+🎭 7. INTÉGRATION DANS L’EXPÉRIENCE IMMERSIVE
+Règles :
+Les couleurs doivent accompagner le storytelling
+Pas de blocs UI classiques visibles
+Tout doit sembler naturel dans la scène
+🧩 8. CTA (STYLE VISUEL)
+
+Inspiré du logo :
+
+Blanc sur noir
+Noir sur blanc
+Bordures fines
+Effets subtils (fade, glow léger)
+
+👉 Pas de boutons flashy
+
+🌌 9. TRANSITIONS
+À privilégier :
+Fondu noir → blanc
+Apparition dans l’ombre
+Révélation progressive
+🚫 À ÉVITER ABSOLUMENT
+Couleurs vives non cohérentes
+UI moderne flashy (bleu, gradients SaaS)
+Boutons standards
+Sur-design inutile
+🧠 RÈGLE D’OR
+
+👉 Chaque couleur doit servir :
+
+l’émotion
+la narration
+l’immersion
