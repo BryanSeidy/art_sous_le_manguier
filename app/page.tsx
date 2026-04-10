@@ -101,9 +101,8 @@ const RevealText = ({ children, delay = 0, className = '' }: { children: ReactNo
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
       <div
-        className={`transform transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          isVisible ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-12 opacity-0 blur-sm'
-        }`}
+        className={`transform transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-12 opacity-0 blur-sm'
+          }`}
         style={{ transitionDelay: `${delay}ms` }}
       >
         {children}
@@ -117,9 +116,8 @@ const RevealScale = ({ children, delay = 0, className = '' }: { children: ReactN
   return (
     <div
       ref={ref}
-      className={`transform transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isVisible ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-95 -rotate-2'
-      } ${className}`}
+      className={`transform transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-95 -rotate-2'
+        } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -132,9 +130,8 @@ const CinematicText = ({ children, delay = 0, className = '' }: { children: Reac
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[1500ms] ease-out ${
-        isVisible ? 'opacity-100 tracking-normal blur-none' : 'opacity-0 tracking-[0.2em] blur-[4px]'
-      } ${className}`}
+      className={`transition-all duration-[1500ms] ease-out ${isVisible ? 'opacity-100 tracking-normal blur-none' : 'opacity-0 tracking-[0.2em] blur-[4px]'
+        } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -202,10 +199,38 @@ export default function ArtSousLeManguierApp() {
   const mouseYRatio = typeof window !== 'undefined' ? mouse.y / window.innerHeight : 0.5;
 
   const experiences = [
-    { tag: 'Exploration', title: 'DANGOA', subtitle: 'Cartographie poétique des quartiers', desc: 'Une exploration artistique où la ville devient une œuvre vivante. Parcours immersifs, déambulations et rencontres spontanées.', img: 'https://images.unsplash.com/photo-1517737286088-7505357dd439?q=80&w=1200', detail: 'Marcher, rencontrer, ressentir.' },
-    { tag: 'Parole', title: 'Awoula Awoula', subtitle: 'La parole comme lien social', desc: 'Des soirées de contes et de récits partagés. Lectures à voix haute, performances de conteurs et échanges intergénérationnels.', img: 'https://images.unsplash.com/photo-1529156069898-49953eb1b5ce?q=80&w=1200', detail: 'Chaque histoire devient mémoire.' },
-    { tag: 'Immersion', title: 'Soir au Kwatta', subtitle: 'Immersion artistique multisensorielle', desc: 'Un mélange vibrant de musique, danse, projections et poésie. Un moment suspendu où les arts dialoguent et les émotions circulent.', img: 'https://images.unsplash.com/photo-1493225457124-a1a2a5f5f4b5?q=80&w=1200', detail: 'Le souffle de la nuit urbaine.' },
-    { tag: 'Création', title: 'Porteurs de Joie', subtitle: 'L’art participatif au cœur des communautés', desc: 'Ateliers créatifs, installations éphémères et performances interactives. L’espace public devient un terrain de création collective.', img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200', detail: 'La joie comme acte de résistance.' },
+    {
+      tag: 'Exploration',
+      title: 'DANGOA',
+      subtitle: 'Cartographie poétique des quartiers',
+      desc: 'Une exploration artistique où la ville devient une œuvre vivante. Parcours immersifs, déambulations et rencontres spontanées.',
+      img: 'images/DANGOA.png',
+      detail: 'Marcher, rencontrer, ressentir.'
+    },
+    {
+      tag: 'Parole',
+      title: 'Awoula Awoula',
+      subtitle: 'La parole comme lien social',
+      desc: 'Des soirées de contes et de récits partagés. Lectures à voix haute, performances de conteurs et échanges intergénérationnels.',
+      img: 'images/Awoula awoula.png',
+      detail: 'Chaque histoire devient mémoire.'
+    },
+    {
+      tag: 'Immersion',
+      title: 'Soir au Kwatta',
+      subtitle: 'Immersion artistique multisensorielle',
+      desc: 'Un mélange vibrant de musique, danse, projections et poésie. Un moment suspendu où les arts dialoguent et les émotions circulent.',
+      img: 'images/SOIR AU KWATTA.png',
+      detail: 'Le souffle de la nuit urbaine.'
+    },
+    {
+      tag: 'Création',
+      title: 'Porteurs de Joie',
+      subtitle: 'L’art participatif au cœur des communautés',
+      desc: 'Ateliers créatifs, installations éphémères et performances interactives. L’espace public devient un terrain de création collective.',
+      img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200',
+      detail: 'La joie comme acte de résistance.'
+    },
   ];
 
   return (
