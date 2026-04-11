@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import logoImage from '@/images/ASLM-LOGO.jpg';
-import quartierImageA from '@/images/doualart.jpeg';
-import quartierImageB from '@/images/doualart1.jpg';
+import logoImage from '@/images/ASM-LOGO.jpg';
+import DANGOA from '@/images/DANGOA.png';
+import SoirAuKwatta from '@/images/SOIR AU KWATTA.png';
+import AwoulaAwoula from '@/images/Awoula awoula.png';
+import PorteursDeJoie from '@/images/doualart1.jpg';
 
 const useScrollProgress = (ref: React.RefObject<HTMLElement | null>) => {
   const [progress, setProgress] = useState(0);
@@ -225,10 +227,10 @@ export default function ArtSousLeManguierApp() {
   }, [isDesktop]);
 
   const experiences = [
-    { tag: 'Exploration', title: 'DANGOA', subtitle: 'Cartographie poétique des quartiers', desc: 'Une exploration artistique où la ville devient une œuvre vivante. Parcours immersifs, déambulations et rencontres spontanées.', img: quartierImageA.src, detail: 'Marcher, rencontrer, ressentir.' },
-    { tag: 'Parole', title: 'Awoula Awoula', subtitle: 'La parole comme lien social', desc: 'Des soirées de contes et de récits partagés. Lectures à voix haute, performances de conteurs et échanges intergénérationnels.', img: quartierImageB.src, detail: 'Chaque histoire devient mémoire.' },
-    { tag: 'Immersion', title: 'Soir au Kwatta', subtitle: 'Immersion artistique multisensorielle', desc: 'Un mélange vibrant de musique, danse, projections et poésie. Un moment suspendu où les arts dialoguent et les émotions circulent.', img: quartierImageA.src, detail: 'Le souffle de la nuit urbaine.' },
-    { tag: 'Création', title: 'Porteurs de Joie', subtitle: 'L’art participatif au cœur des communautés', desc: 'Ateliers créatifs, installations éphémères et performances interactives. L’espace public devient un terrain de création collective.', img: quartierImageB.src, detail: 'La joie comme acte de résistance.' },
+    { tag: 'Exploration', title: 'DANGOA', subtitle: 'Cartographie poétique des quartiers', desc: 'Une exploration artistique où la ville devient une œuvre vivante. Parcours immersifs, déambulations et rencontres spontanées.', img: DANGOA.src, detail: 'Marcher, rencontrer, ressentir.' },
+    { tag: 'Parole', title: 'Awoula Awoula', subtitle: 'La parole comme lien social', desc: 'Des soirées de contes et de récits partagés. Lectures à voix haute, performances de conteurs et échanges intergénérationnels.', img: AwoulaAwoula.src, detail: 'Chaque histoire devient mémoire.' },
+    { tag: 'Immersion', title: 'Soir au Kwatta', subtitle: 'Immersion artistique multisensorielle', desc: 'Un mélange vibrant de musique, danse, projections et poésie. Un moment suspendu où les arts dialoguent et les émotions circulent.', img: SoirAuKwatta.src, detail: 'Le souffle de la nuit urbaine.' },
+    { tag: 'Création', title: 'Porteurs de Joie', subtitle: 'L’art participatif au cœur des communautés', desc: 'Ateliers créatifs, installations éphémères et performances interactives. L’espace public devient un terrain de création collective.', img: PorteursDeJoie.src, detail: 'La joie comme acte de résistance.' },
   ];
 
   return (
