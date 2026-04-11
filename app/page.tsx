@@ -474,7 +474,7 @@ export default function ArtSousLeManguierApp() {
               <p className="mono text-xs uppercase tracking-widest text-[#7C7C7C]">Participants engagés</p>
             </RevealScale>
             <RevealScale delay={300}>
-              <p className="serif text-7xl md:text-8xl text-[#30906B] mb-4">10</p>
+              <p className="serif text-7xl md:text-8xl text-[#4F5753] mb-4">10</p>
               <p className="mono text-xs uppercase tracking-widest text-[#7C7C7C]">Quartiers activés</p>
             </RevealScale>
           </div>
