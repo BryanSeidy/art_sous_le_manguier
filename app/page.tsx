@@ -101,6 +101,31 @@ const useMediaQuery = (query: string) => {
   return matches;
 };
 
+const useScrollDirection = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+
+      if (currentY < 32) {
+        setIsVisible(true);
+      } else if (Math.abs(delta) > 6) {
+        setIsVisible(delta < 0);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return isVisible;
+};
+
 const RevealText = ({ children, delay = 0, className = '' }: { children: ReactNode; delay?: number; className?: string }) => {
   const [ref, isVisible] = useIntersection(0.2);
   return (
@@ -201,30 +226,19 @@ export default function ArtSousLeManguierApp() {
 
   const heroProgress = useScrollProgress(heroRef);
   const transitionProgress = useScrollProgress(transitionRef);
-  const horizontalProgress = useScrollProgress(horizontalRef);
   const mouse = useMousePosition();
   const isDesktop = useMediaQuery('(min-width: 768px)');
-  const [horizontalTravel, setHorizontalTravel] = useState(0);
-  const mouseXRatio = typeof window !== 'undefined' ? mouse.x / window.innerWidth : 0.5;
-  const mouseYRatio = typeof window !== 'undefined' ? mouse.y / window.innerHeight : 0.5;
+  const isNavVisible = useScrollDirection();
+  const [viewportSize, setViewportSize] = useState({ width: 1, height: 1 });
+  const mouseXRatio = Math.min(1, Math.max(0, mouse.x / viewportSize.width));
+  const mouseYRatio = Math.min(1, Math.max(0, mouse.y / viewportSize.height));
 
   useEffect(() => {
-    if (!isDesktop) {
-      setHorizontalTravel(0);
-      return;
-    }
-
-    const updateHorizontalTravel = () => {
-      if (!horizontalTrackRef.current) return;
-      const extraPadding = 96;
-      const maxScroll = horizontalTrackRef.current.scrollWidth - window.innerWidth + extraPadding;
-      setHorizontalTravel(Math.max(0, maxScroll));
-    };
-
-    updateHorizontalTravel();
-    window.addEventListener('resize', updateHorizontalTravel);
-    return () => window.removeEventListener('resize', updateHorizontalTravel);
-  }, [isDesktop]);
+    const updateViewport = () => setViewportSize({ width: window.innerWidth, height: window.innerHeight });
+    updateViewport();
+    window.addEventListener('resize', updateViewport);
+    return () => window.removeEventListener('resize', updateViewport);
+  }, []);
 
   const experiences = [
     { tag: 'Exploration', title: 'DANGOA', subtitle: 'Cartographie poétique des quartiers', desc: 'Une exploration artistique où la ville devient une œuvre vivante. Parcours immersifs, déambulations et rencontres spontanées.', img: DANGOA.src, detail: 'Marcher, rencontrer, ressentir.' },
@@ -277,13 +291,15 @@ export default function ArtSousLeManguierApp() {
 
       <div className="noise-overlay"></div>
 
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-6xl p-4 md:px-8 flex justify-between items-center z-50 bg-[#F4F4F4]/55 backdrop-blur-2xl border border-white/40 rounded-[28px] shadow-[0_10px_40px_rgba(48,144,107,0.12)] transition-all duration-300">
+      <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-6xl p-4 md:px-8 flex justify-between items-center z-50 bg-[#f7f7f7]/45 backdrop-blur-2xl border border-white/40 rounded-[28px] shadow-[0_10px_40px_rgba(48,144,107,0.12)] transition-all duration-500 ${isNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8 pointer-events-none'}`}>
         <a href="#hero" className="relative group flex items-center hover-trigger cursor-pointer">
-          <img src={logoImage.src} alt="Art Sous le Manguier Logo" className="h-10 md:h-12 w-auto mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
+          <span className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#f7f7f7] shadow-[0_8px_24px_rgba(30,43,39,0.18),inset_2px_2px_8px_rgba(255,255,255,0.6)] border border-white/70 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
+            <img src={logoImage.src} alt="Art Sous le Manguier Logo" className="h-[86%] w-[86%] object-cover rounded-full mix-blend-multiply" />
+          </span>
         </a>
-        <div className="hidden md:flex gap-8 mono text-[10px] uppercase tracking-widest text-[#30906B]">
+        <div className="hidden md:flex gap-8 mono text-[10px] uppercase tracking-widest text-[#F7F7F7] drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]">
           {['Vision', 'Expériences', 'Impact'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="hover-trigger cursor-pointer hover:text-[#7C7C7C] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#30906B] hover:after:w-full after:transition-all after:duration-300">{item}</a>
+            <a key={item} href={`#${item.toLowerCase()}`} className="hover-trigger cursor-pointer hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#F7F7F7] hover:after:w-full after:transition-all after:duration-300">{item}</a>
           ))}
         </div>
       </nav>
@@ -337,13 +353,14 @@ export default function ArtSousLeManguierApp() {
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] bg-[#7C7C7C] blur-[150px] opacity-10 rounded-full mix-blend-screen" />
 
-          <div
-            className="relative z-10 space-y-16 max-w-4xl"
-            style={{ transform: `translateY(${60 - transitionProgress * 120}px)` }}
-          >
+          <div className="relative z-10 space-y-16 max-w-4xl">
             <p
               className="serif text-5xl md:text-7xl text-[#F4F4F4] drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
-              style={{ opacity: transitionProgress > 0.08 ? 1 : 0, transform: `scale(${transitionProgress > 0.08 ? 1 : 0.92})`, transition: 'all 1.5s cubic-bezier(0.16, 1, 0.3, 1)' }}
+              style={{
+                opacity: Math.max(0, 1 - Math.abs(transitionProgress - 0.5) * 3.2),
+                transform: `translateY(${(transitionProgress - 0.5) * -20}px) scale(${0.94 + (1 - Math.abs(transitionProgress - 0.5) * 1.1) * 0.1})`,
+                transition: 'opacity 0.35s ease-out, transform 0.35s ease-out',
+              }}
             >
               La ville parle.
             </p>
@@ -386,25 +403,30 @@ export default function ArtSousLeManguierApp() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center max-w-6xl mx-auto relative z-10">
           <FadeIn delay={300} className="animate-float" style={{ animationDelay: '0s' }}>
-            <div className="p-12 border border-[#B0B0B0]/30 bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md rounded-sm hover:bg-white/90 transition-all duration-500 shadow-[0_20px_60px_rgba(79,87,83,0.08)] hover:-translate-y-1">
-              <h3 className="serif text-3xl text-[#30906B] mb-4 italic">Chaque quartier<br />devient une île.</h3>
+            <div className="relative overflow-hidden p-12 border border-white/80 bg-[#e9edf2] backdrop-blur-md rounded-[28px] transition-all duration-700 shadow-[12px_12px_28px_rgba(160,170,183,0.38),-12px_-12px_24px_rgba(255,255,255,0.92)] hover:-translate-y-2">
+              <img src={DANGOA.src} alt="Illustration quartier" className="absolute inset-0 w-full h-full object-cover opacity-12" />
+              <div className="absolute inset-0 rounded-[28px] shadow-[inset_2px_2px_10px_rgba(255,255,255,0.9),inset_-4px_-4px_12px_rgba(154,166,178,0.3)]" />
+              <h3 className="relative serif text-3xl text-[#30906B] mb-4 italic">Chaque quartier<br />devient une île.</h3>
             </div>
           </FadeIn>
           <FadeIn delay={500} className="animate-float" style={{ animationDelay: '-2s' }}>
-            <div className="p-12 border border-[#B0B0B0]/30 bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md rounded-sm hover:bg-white/90 transition-all duration-500 shadow-[0_20px_60px_rgba(79,87,83,0.08)] hover:-translate-y-1">
-              <h3 className="serif text-3xl text-[#30906B] mb-4 italic">Chaque rencontre,<br />un pont.</h3>
+            <div className="relative overflow-hidden p-12 border border-[#d9dff4] bg-gradient-to-br from-[#7b45ff] via-[#9146ff] to-[#d64adf] rounded-[28px] transition-all duration-700 shadow-[0_22px_40px_rgba(95,62,171,0.42)] hover:-translate-y-2">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.38),transparent_45%)]" />
+              <h3 className="relative serif text-3xl text-[#F7F7F7] mb-4 italic">Chaque rencontre,<br />un pont.</h3>
             </div>
           </FadeIn>
           <FadeIn delay={700} className="animate-float" style={{ animationDelay: '-4s' }}>
-            <div className="p-12 border border-[#B0B0B0]/30 bg-gradient-to-b from-white/70 to-white/40 backdrop-blur-md rounded-sm hover:bg-white/90 transition-all duration-500 shadow-[0_20px_60px_rgba(79,87,83,0.08)] hover:-translate-y-1">
-              <h3 className="serif text-3xl text-[#30906B] mb-4 italic">Chaque expérience,<br />une trace.</h3>
+            <div className="relative overflow-hidden p-12 border border-white/80 bg-[#e9edf2]/85 backdrop-blur-lg rounded-[28px] transition-all duration-700 shadow-[12px_12px_28px_rgba(160,170,183,0.38),-12px_-12px_24px_rgba(255,255,255,0.92)] hover:-translate-y-2">
+              <img src={SoirAuKwatta.src} alt="Illustration expérience" className="absolute inset-0 w-full h-full object-cover opacity-12" />
+              <div className="absolute inset-0 rounded-[28px] bg-white/10" />
+              <h3 className="relative serif text-3xl text-[#30906B] mb-4 italic">Chaque expérience,<br />une trace.</h3>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      <section id="experiences" ref={horizontalRef} className={`relative bg-[#F4F4F4] ${isDesktop ? 'h-[400vh]' : 'h-auto py-32'}`}>
-        <div className={`${isDesktop ? 'sticky top-0 h-screen overflow-hidden' : 'relative'} bg-[#30906B] text-[#F4F4F4]`}>
+      <section id="experiences" ref={horizontalRef} className="relative bg-[#F4F4F4] py-24 md:py-32">
+        <div className="relative bg-[#30906B] text-[#F4F4F4] md:rounded-t-[48px] md:rounded-b-[48px]">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(244,244,244,0.03)_0%,transparent_70%)] pointer-events-none" />
 
           <div className={`px-6 md:px-12 mb-12 relative z-10 ${isDesktop ? 'pt-24' : ''}`}>
@@ -416,13 +438,9 @@ export default function ArtSousLeManguierApp() {
             </RevealText>
           </div>
 
-          <div
-            ref={horizontalTrackRef}
-            className={`flex ${isDesktop ? 'gap-12 px-12 w-max' : 'flex-col gap-8 px-6 w-full'} transition-transform duration-75 ease-linear will-change-transform pb-24`}
-            style={{ transform: isDesktop ? `translateX(-${horizontalProgress * horizontalTravel}px)` : 'none' }}
-          >
+          <div ref={horizontalTrackRef} className={`grid ${isDesktop ? 'grid-cols-2 gap-10 px-12' : 'grid-cols-1 gap-8 px-6'} pb-24`}>
             {experiences.map((exp, i) => (
-              <div key={i} className={`relative group overflow-hidden border border-[#B0B0B0]/20 rounded-sm shadow-2xl flex-shrink-0 bg-[#30906B] ${isDesktop ? 'w-[45vw] h-[60vh]' : 'w-full h-[60vh]'}`}>
+              <div key={i} className={`relative group overflow-hidden border border-[#B0B0B0]/20 rounded-sm shadow-2xl flex-shrink-0 bg-[#30906B] w-full h-[60vh] transition-all duration-700 ${isDesktop ? (i % 2 === 0 ? 'md:translate-y-0' : 'md:translate-y-24') : ''}`}>
                 <img
                   src={exp.img}
                   className="w-full h-full object-cover brightness-[0.4] group-hover:brightness-[0.5] group-hover:scale-105 transition-all duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -448,12 +466,6 @@ export default function ArtSousLeManguierApp() {
               </div>
             ))}
           </div>
-
-          {isDesktop && (
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-64 h-[2px] bg-[#B0B0B0]/20 overflow-hidden z-20 rounded-full">
-              <div className="h-full bg-[#F4F4F4] transition-all duration-75 ease-linear" style={{ width: `${horizontalProgress * 100}%` }} />
-            </div>
-          )}
         </div>
       </section>
 
@@ -593,7 +605,9 @@ export default function ArtSousLeManguierApp() {
 
         <div className="w-full max-w-7xl border-t border-[#B0B0B0]/30 pt-12 flex flex-col lg:flex-row justify-between items-center gap-12">
           <div className="flex flex-col items-center lg:items-start gap-6">
-            <img src={logoImage.src} alt="Logo" className="h-12 mix-blend-multiply opacity-90 hover:opacity-100 transition-opacity" />
+            <div className="w-16 h-16 rounded-full bg-[#f7f7f7] shadow-[0_8px_24px_rgba(30,43,39,0.18),inset_2px_2px_8px_rgba(255,255,255,0.6)] border border-white/70 flex items-center justify-center overflow-hidden">
+              <img src={logoImage.src} alt="Logo" className="h-[84%] w-[84%] object-cover rounded-full mix-blend-multiply opacity-90 hover:opacity-100 transition-opacity" />
+            </div>
             <p className="text-[#7C7C7C] text-sm font-light max-w-xs text-center lg:text-left">Faire de chaque quartier un espace vivant de création, de dialogue et de mémoire.</p>
           </div>
 
