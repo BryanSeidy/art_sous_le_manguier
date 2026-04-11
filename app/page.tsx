@@ -293,7 +293,7 @@ export default function ArtSousLeManguierApp() {
 
       <nav className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] md:w-[82%] max-w-6xl p-4 md:px-8 flex justify-between items-center z-50 bg-[#f7f7f7]/45 backdrop-blur-2xl border border-white/40 rounded-[28px] shadow-[0_10px_40px_rgba(48,144,107,0.12)] transition-all duration-500 ${isNavVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8 pointer-events-none'}`}>
         <a href="#hero" className="relative group flex items-center hover-trigger cursor-pointer">
-          <span className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#f7f7f7] shadow-[0_8px_24px_rgba(30,43,39,0.18),inset_2px_2px_8px_rgba(255,255,255,0.6)] border border-white/70 flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
+          <span className="w-12 h-12 md:w-16 md:h-16 rounded-full shadow-[0_8px_24px_rgba(30,43,39,0.18),inset_2px_2px_8px_rgba(255,255,255,0.6)] flex items-center justify-center overflow-hidden transition-transform duration-500 group-hover:scale-105">
             <img src={logoImage.src} alt="Art Sous le Manguier Logo" className="h-[86%] w-[86%] object-cover rounded-full mix-blend-multiply" />
           </span>
         </a>
