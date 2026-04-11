@@ -279,7 +279,7 @@ export default function ArtSousLeManguierApp() {
 
       <nav className="fixed top-0 w-full p-4 md:px-12 flex justify-between items-center z-50 bg-[#F4F4F4]/60 backdrop-blur-xl border-b border-[#B0B0B0]/20 transition-all duration-300">
         <a href="#hero" className="relative group flex items-center hover-trigger cursor-pointer">
-          <img src="https://dummyimage.com/240x80/f4f4f4/4f5753&text=ASLM" alt="Art Sous le Manguier Logo" className="h-10 md:h-12 w-auto mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
+          <img src="styles/images/ASM-LOGO.jpg" alt="Art Sous le Manguier Logo" className="h-10 md:h-12 w-auto mix-blend-multiply transition-transform duration-500 group-hover:scale-105" />
         </a>
         <div className="hidden md:flex gap-8 mono text-[10px] uppercase tracking-widest text-[#4F5753]">
           {['Vision', 'Expériences', 'Impact'].map((item) => (
