@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Episodes | Art Under the Mango Tree</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#30312e",
+                        "surface-bright": "#fbf9f4",
+                        "secondary-fixed-dim": "#ffba20",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "primary": "#051a0f",
+                        "error": "#ba1a1a",
+                        "surface": "#fbf9f4",
+                        "on-primary-container": "#809787",
+                        "secondary": "#7c5800",
+                        "primary-fixed-dim": "#b4ccbb",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary-fixed": "#271900",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary": "#271000",
+                        "on-surface": "#1b1c19",
+                        "inverse-on-surface": "#f2f1ec",
+                        "background": "#fbf9f4",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-tertiary-fixed-variant": "#653d1e",
+                        "tertiary-container": "#432205",
+                        "on-primary-fixed-variant": "#364c3e",
+                        "outline-variant": "#c2c8c2",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1c19",
+                        "on-secondary-container": "#6b4b00",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e4e2dd",
+                        "inverse-primary": "#b4ccbb",
+                        "primary-fixed": "#d0e9d6",
+                        "primary-container": "#1a2f23",
+                        "surface-tint": "#4d6355",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-dim": "#dbdad5",
+                        "surface-container": "#f0eee9",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#737973",
+                        "on-surface-variant": "#424843",
+                        "on-tertiary-container": "#ba8762",
+                        "tertiary-fixed-dim": "#f4bb92",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#0a2014",
+                        "secondary-container": "#feb700",
+                        "secondary-fixed": "#ffdea8"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "notoSerif": ["Noto Serif", "serif"],
+                        "manrope": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .organic-leaf-shape {
+            border-top-left-radius: 4rem;
+            border-bottom-right-radius: 4rem;
+            border-top-right-radius: 1rem;
+            border-bottom-left-radius: 1rem;
+        }
+        .glass-nav {
+            background: rgba(251, 249, 244, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-manrope text-on-surface selection:bg-secondary-container">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-xl no-border tonal-shift">
+<div class="flex justify-between items-center px-8 py-6 w-full max-w-screen-2xl mx-auto">
+<span class="text-2xl font-bold text-on-surface font-notoSerif">Art Under the Mango Tree</span>
+<div class="hidden md:flex items-center space-x-10">
+<a class="text-secondary border-b-2 border-secondary font-bold pb-1 font-notoSerif tracking-tight text-lg" href="#">Episodes</a>
+<a class="text-on-surface/80 hover:text-secondary transition-colors duration-300 font-notoSerif tracking-tight text-lg" href="#">Artists</a>
+<a class="text-on-surface/80 hover:text-secondary transition-colors duration-300 font-notoSerif tracking-tight text-lg" href="#">Projects</a>
+<a class="text-on-surface/80 hover:text-secondary transition-colors duration-300 font-notoSerif tracking-tight text-lg" href="#">About</a>
+</div>
+<button class="material-symbols-outlined text-on-surface scale-95 transition-transform">menu</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-screen-2xl mx-auto">
+<!-- Header Section -->
+<header class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-3xl">
+<span class="text-secondary font-manrope text-sm tracking-widest uppercase mb-4 block">Archive Selection</span>
+<h1 class="text-5xl md:text-7xl font-notoSerif font-bold text-primary tracking-tight leading-tight">
+                    The Fruits of the <br/>
+<span class="italic text-secondary">Mango Tree</span>
+</h1>
+<p class="mt-6 text-lg text-on-surface-variant max-w-xl leading-relaxed">
+                    A curated harvest of conversations, performances, and digital explorations. Each episode is a seed planted in the soil of our collective heritage.
+                </p>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-px w-24 bg-outline-variant/30 hidden lg:block"></div>
+<span class="font-notoSerif italic text-xl">Season 02 available now</span>
+</div>
+</header>
+<!-- Organic Grid of 'Fruit-Shaped' Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+<!-- Episode Card 1 -->
+<article class="group relative">
+<div class="aspect-[4/5] overflow-hidden organic-leaf-shape bg-surface-container-low transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+<img alt="Cinematic portrait of a contemporary sculptor" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Cinematic close-up portrait of a contemporary West African sculptor working with bronze in a sun-drenched studio with dust motes dancing in the light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAHa_rtLXQsAEi8EuAe1WBruErETjzQRQVqKBXlK_iZuqWrbhl9EYZ_FzlphM52SDqmHBafdT1Zvf437XX3OemQowXlqP1amEVSqsg2_2NMukvLDLWbGSiK-0subvsMNpU2-FtX8W7guybiJLZ4iHlbzXoWIzWmlIFxCtOQoztgRc061ekV-MgL-UmjCs8w9KdxgeCUrSDu8GhUJgikA1LNhYRy-WhbxXuIl2CNO_3sALsw9wEXI2mRa896S-A9BqVT2laoijOIH8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-manrope font-bold tracking-widest uppercase text-on-secondary-fixed-variant bg-secondary-fixed px-3 py-1 rounded-full">Season 02 • EP 01</span>
+<span class="text-sm font-manrope text-on-surface-variant italic">14:20 MINS</span>
+</div>
+<h3 class="text-3xl font-notoSerif font-bold text-on-surface group-hover:text-secondary transition-colors leading-tight">Molding Ancestral Shadows</h3>
+<p class="text-on-surface-variant font-manrope font-medium">featuring <span class="text-primary">Kofi Mensah</span></p>
+<div class="pt-4 overflow-hidden h-0 group-hover:h-12 transition-all duration-500 opacity-0 group-hover:opacity-100">
+<button class="flex items-center gap-2 text-secondary font-bold tracking-tight">
+                            WATCH FULL EPISODE
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Episode Card 2 -->
+<article class="group relative lg:mt-12">
+<div class="aspect-[4/5] overflow-hidden organic-leaf-shape bg-surface-container-low transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+<img alt="Ethereal landscape photography with mango leaves" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Ethereal wide shot of a sacred mango grove at dawn, heavy mist clinging to the ground, soft emerald green and golden yellow tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO0IRFpAYdGSRHRVTNRUO2qa_LmcLblkMUaB7BfPHAkdpoowfW3H6klbsyI-3WJw_uEUpC6KOj3hyHWARuc6cv09HEDKOrrXq7uK_IL02hGUsBFrwedkIgIKuJxLBm7o657SJ0qsB5Vv0-9e7nrld1MxjT2NXZHouJQi9eN4oCYADf8mxn1eb_eOKqIRue1mn2t5o5xlNruA4Ag_R5Ds0uCR-VIXgjH8VvOf71CIS4rsbOQ8a-nhy7LkKhyqmi10X4mcA_7K-CuGg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-manrope font-bold tracking-widest uppercase text-on-secondary-fixed-variant bg-secondary-fixed px-3 py-1 rounded-full">Season 02 • EP 02</span>
+<span class="text-sm font-manrope text-on-surface-variant italic">22:05 MINS</span>
+</div>
+<h3 class="text-3xl font-notoSerif font-bold text-on-surface group-hover:text-secondary transition-colors leading-tight">The Canopy of Echoes</h3>
+<p class="text-on-surface-variant font-manrope font-medium">featuring <span class="text-primary">Amara Dia</span></p>
+<div class="pt-4 overflow-hidden h-0 group-hover:h-12 transition-all duration-500 opacity-0 group-hover:opacity-100">
+<button class="flex items-center gap-2 text-secondary font-bold tracking-tight">
+                            WATCH FULL EPISODE
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Episode Card 3 -->
+<article class="group relative">
+<div class="aspect-[4/5] overflow-hidden organic-leaf-shape bg-surface-container-low transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+<img alt="Macro shot of vibrant textile patterns" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Macro detail of hand-woven textile with intricate geometric patterns in indigo and ochre, showing rich tactile fiber textures and organic dyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAog9mmqTGLU6_zJgij_5tDlB1026Ct2jrj89agC7znOSVSpf6i4XEJ93hE6dvZ12oeoraNQaiZOyaFlP4vHW4zeCiekco9kQdvwF5-YJqpyDm3ec6G8wOm6eJc35SBLe7PiQjjBiX3JEfviOFHgvJOeTEpsJflHcHBMjjVENufjIL1G6XJj8PBgdJEKg-t6TKjAZ_E7D-vr1rgKj6KQbWAXpDJNfqT6llLmg-BwLMmXPjXLyq1rfC2iQX0DuL_BAJwpbY_a_9wwm8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-manrope font-bold tracking-widest uppercase text-on-secondary-fixed-variant bg-secondary-fixed px-3 py-1 rounded-full">Season 01 • EP 12</span>
+<span class="text-sm font-manrope text-on-surface-variant italic">18:45 MINS</span>
+</div>
+<h3 class="text-3xl font-notoSerif font-bold text-on-surface group-hover:text-secondary transition-colors leading-tight">Weaving the Digital Loom</h3>
+<p class="text-on-surface-variant font-manrope font-medium">featuring <span class="text-primary">Dr. Malik Zola</span></p>
+<div class="pt-4 overflow-hidden h-0 group-hover:h-12 transition-all duration-500 opacity-0 group-hover:opacity-100">
+<button class="flex items-center gap-2 text-secondary font-bold tracking-tight">
+                            WATCH FULL EPISODE
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Episode Card 4 -->
+<article class="group relative lg:-mt-12">
+<div class="aspect-[4/5] overflow-hidden organic-leaf-shape bg-surface-container-low transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+<img alt="Architectural study of sunlight and shadows" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Modernist mud-brick architecture with sharp geometric shadows cast by an overhead canopy, minimalist composition in earthy clay tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALYhtjjQV2G6ydApK91igxPL2skrVwVPJopjlXIXaMEQqhgld0s2lpHmat80fhrcsE-F4ZeteyT9CpfAj1kItIUUyYKG4lckvgygRaI2r1ndCo8-AaNyIO2Ow4tOh759KgCA9sEtVuxmC1zGCHz0A9jY081_gJbjRukZ9elaEqdmY7M_DHxub3MB_naXaknNnY7-5UUxDQBjnOOkH-N-d7P8RK139AgCmRND-k4eP8ua9nw-m2uZ7jp7TxGNJ1RnHR8k0TX7gWLmE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-manrope font-bold tracking-widest uppercase text-on-secondary-fixed-variant bg-secondary-fixed px-3 py-1 rounded-full">Season 01 • EP 11</span>
+<span class="text-sm font-manrope text-on-surface-variant italic">31:10 MINS</span>
+</div>
+<h3 class="text-3xl font-notoSerif font-bold text-on-surface group-hover:text-secondary transition-colors leading-tight">Structures of Stillness</h3>
+<p class="text-on-surface-variant font-manrope font-medium">featuring <span class="text-primary">Yara Salim</span></p>
+<div class="pt-4 overflow-hidden h-0 group-hover:h-12 transition-all duration-500 opacity-0 group-hover:opacity-100">
+<button class="flex items-center gap-2 text-secondary font-bold tracking-tight">
+                            WATCH FULL EPISODE
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Episode Card 5 -->
+<article class="group relative">
+<div class="aspect-[4/5] overflow-hidden organic-leaf-shape bg-surface-container-low transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+<img alt="Abstract digital art visualization" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Abstract fluid simulation of iridescent liquid gold and deep forest green mixing together with organic particulate textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7e1RglIKy4oDBUZ0Ul0oMeWmskHexR2rNfSw5GLj_L0VEqxTm_oAQsesfHYgFHMEB4VRYWwF1vTGqtl5A94PCiLNnAmZ7DOhM1q2VIfvs1McV9PMqJ1ut2RYvx0AcboPIPMEiTZdK7wPUmH59Lw3rqGuHHGuL0GhOVVyqx0R5mLnzkeTE6cZUhVynX7-TyxWEQOGNl0J9laiwiIQpepu8uIB4ORMW-JhNzcIJ2Y4D6nGUZapmWmtfk12qdxhobMpSDuLSuU1tLcs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-manrope font-bold tracking-widest uppercase text-on-secondary-fixed-variant bg-secondary-fixed px-3 py-1 rounded-full">Season 01 • EP 10</span>
+<span class="text-sm font-manrope text-on-surface-variant italic">25:30 MINS</span>
+</div>
+<h3 class="text-3xl font-notoSerif font-bold text-on-surface group-hover:text-secondary transition-colors leading-tight">Digital Soil: Minting Culture</h3>
+<p class="text-on-surface-variant font-manrope font-medium">featuring <span class="text-primary">The Crypto-Curators</span></p>
+<div class="pt-4 overflow-hidden h-0 group-hover:h-12 transition-all duration-500 opacity-0 group-hover:opacity-100">
+<button class="flex items-center gap-2 text-secondary font-bold tracking-tight">
+                            WATCH FULL EPISODE
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Episode Card 6 -->
+<article class="group relative lg:mt-12">
+<div class="aspect-[4/5] overflow-hidden organic-leaf-shape bg-surface-container-low transition-all duration-500 group-hover:shadow-xl group-hover:-translate-y-2">
+<img alt="Dark moody pottery studio" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Moody atmospheric shot of hand-thrown ceramic pots cooling on wooden shelves in a dark room with a single beam of light hitting a textured clay surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxkGJn_4SjsXDUp40qH6RXmRQAtdsOv8B5rbIp5rZMpenC4mTvCSD4JrkirFwyPxLCKsyFhHINrFyM8ytB-tVQRuKaqO5aJBnB_7OP_cwl6QG68vY8fxnv8v7URafTkBM-XFm7fj56HMUrLDK76huzfHSTT2BWSIBdb5qGHMYkuxbqBqZhSdRFDA8hLOq4wkwIXDXe8fR00LL_Sv28PL9na6kCKfeOKlt04asXLTZ7W2jflzXjby7Dia28i3rsFdzd3_DSjZn6yGE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+<div class="w-20 h-20 bg-secondary-container rounded-full flex items-center justify-center shadow-lg transform scale-90 group-hover:scale-100 transition-transform">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="mt-8 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-manrope font-bold tracking-widest uppercase text-on-secondary-fixed-variant bg-secondary-fixed px-3 py-1 rounded-full">Season 01 • EP 09</span>
+<span class="text-sm font-manrope text-on-surface-variant italic">19:50 MINS</span>
+</div>
+<h3 class="text-3xl font-notoSerif font-bold text-on-surface group-hover:text-secondary transition-colors leading-tight">Clay, Fire, and Algorithms</h3>
+<p class="text-on-surface-variant font-manrope font-medium">featuring <span class="text-primary">Obi Wanzo</span></p>
+<div class="pt-4 overflow-hidden h-0 group-hover:h-12 transition-all duration-500 opacity-0 group-hover:opacity-100">
+<button class="flex items-center gap-2 text-secondary font-bold tracking-tight">
+                            WATCH FULL EPISODE
+                            <span class="material-symbols-outlined">arrow_right_alt</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+<!-- Pagination/Load More Section -->
+<div class="mt-24 text-center">
+<button class="px-12 py-5 bg-primary text-on-primary font-manrope font-bold rounded-lg transition-all hover:bg-primary-container hover:scale-105 hover:shadow-xl">
+                Explore The Archive
+            </button>
+<p class="mt-6 font-notoSerif italic text-on-surface-variant">Showing 6 of 48 seeds from the canopy</p>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-primary w-full relative">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full">
+<div class="mb-8 md:mb-0">
+<span class="font-notoSerif italic text-xl text-on-surface">Art Under the Mango Tree</span>
+<p class="mt-4 font-manrope text-sm tracking-widest uppercase text-tertiary-container max-w-xs">
+                    © 2024 Art Under the Mango Tree. A Digital Curator Production.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 md:gap-12">
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Instagram</a>
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Vimeo</a>
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Archive</a>
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Credits</a>
+</div>
+</div>
+<!-- Subtle Visual Flourish -->
+<div class="absolute bottom-0 right-0 w-32 h-32 bg-secondary-container/10 organic-leaf-shape blur-3xl -z-10"></div>
+<div class="absolute top-0 left-0 w-64 h-64 bg-primary-container/5 rounded-full blur-3xl -z-10"></div>
+</footer>
+</body></html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#30312e",
+                    "surface-bright": "#fbf9f4",
+                    "secondary-fixed-dim": "#ffba20",
+                    "on-secondary-fixed-variant": "#5e4200",
+                    "primary": "#051a0f",
+                    "error": "#ba1a1a",
+                    "surface": "#fbf9f4",
+                    "on-primary-container": "#809787",
+                    "secondary": "#7c5800",
+                    "primary-fixed-dim": "#b4ccbb",
+                    "surface-container-low": "#f5f3ee",
+                    "on-secondary-fixed": "#271900",
+                    "surface-container-high": "#eae8e3",
+                    "tertiary": "#271000",
+                    "on-surface": "#1b1c19",
+                    "inverse-on-surface": "#f2f1ec",
+                    "background": "#fbf9f4",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcc5",
+                    "on-tertiary-fixed-variant": "#653d1e",
+                    "tertiary-container": "#432205",
+                    "on-primary-fixed-variant": "#364c3e",
+                    "outline-variant": "#c2c8c2",
+                    "surface-container-highest": "#e4e2dd",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1c19",
+                    "on-secondary-container": "#6b4b00",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e4e2dd",
+                    "inverse-primary": "#b4ccbb",
+                    "primary-fixed": "#d0e9d6",
+                    "primary-container": "#1a2f23",
+                    "surface-tint": "#4d6355",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-dim": "#dbdad5",
+                    "surface-container": "#f0eee9",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#737973",
+                    "on-surface-variant": "#424843",
+                    "on-tertiary-container": "#ba8762",
+                    "tertiary-fixed-dim": "#f4bb92",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#0a2014",
+                    "secondary-container": "#feb700",
+                    "secondary-fixed": "#ffdea8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "1rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "notoSerif": ["Noto Serif"],
+                    "manrope": ["Manrope"],
+                    "headline": ["Noto Serif"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.hero-gradient {
+    background: radial-gradient(circle at center, rgba(5, 26, 15, 0.4) 0%, rgba(5, 26, 15, 0.9) 100%)
+    }
+.grain-texture {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBTA8kWjK6JbhCrqbu9BoiCLpX1LmBMwSmyAOj20hufLfuaU7BWjts9wyhEB4m6ZZecDXOlyY6aqQS5fjUX__5IE7z4uEKRmroShqfisneDUBalgoRNj-G4FFzbHoqo_lq3UBoEFo9qKbi0RyQsVMHHTJ5ByYkRXMr-b3-4tCAyhuZc23sPu9N7cPX1A1c8lj13QGtZ_wtRySzFpC0t38Zv6005n89NrGF9kESlmuzjncSM0B4ECW4woOcTQSIN6aIMVOCtjts283s)
+    }</style>
+</head>
+<body class="bg-surface font-manrope text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-primary/70 backdrop-blur-xl no-border tonal-shift">
+<div class="flex justify-between items-center px-8 py-6 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold text-on-surface dark:text-on-primary font-notoSerif">
+                Art Under the Mango Tree
+            </div>
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-notoSerif tracking-tight text-lg text-on-surface/80 dark:text-on-primary/80 hover:text-secondary transition-colors duration-300" href="#">Episodes</a>
+<a class="font-notoSerif tracking-tight text-lg text-on-surface/80 dark:text-on-primary/80 hover:text-secondary transition-colors duration-300" href="#">Artists</a>
+<a class="font-notoSerif tracking-tight text-lg text-on-surface/80 dark:text-on-primary/80 hover:text-secondary transition-colors duration-300" href="#">Projects</a>
+<a class="font-notoSerif tracking-tight text-lg text-on-surface/80 dark:text-on-primary/80 hover:text-secondary transition-colors duration-300" href="#">About</a>
+</div>
+<button class="material-symbols-outlined text-on-surface text-2xl scale-95 transition-transform">search</button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<!-- Background "Video" Placeholder/Imagery -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Cinematic wide shot of a massive ancient mango tree with sprawling branches under a moody twilight sky, ethereal atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv_HdjcVzrkXgwbw2YGtItN6_RS6QUGX5Pe8Y77j4VfD761cwNeCNg3fB701i1t6wNgGkZPObBh0vMuQ-VrYBdkDSvmqTGFG692lkVGuA8NWrbb6AfUtSQ9kmaT-ZYr4soVM9ti-k13s_i5XxHY6ddZe222yK4vSLEvGHMEtDX83O0rq7MHYqnq6_8t90JirzpLy-GpnfFfSQG-YNPbmRhjGIfmzjeLAYTsgDbwP0H5_jUB4cLp-IOWLQB9-HOtF4Q4ubjaK1p24c"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="absolute inset-0 grain-texture opacity-10"></div>
+</div>
+<!-- Content Overlay -->
+<div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+<span class="inline-block text-secondary-container font-manrope tracking-[0.3em] uppercase text-xs mb-8">Digital Curator Series</span>
+<h1 class="font-notoSerif text-5xl md:text-7xl lg:text-8xl text-surface-bright leading-tight tracking-tight mb-12">
+                    Under the mango tree, <span class="italic text-secondary-container/90">stories</span> are born that transcend time
+                </h1>
+<div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-lg text-lg font-medium hover:bg-primary-container transition-all flex items-center gap-3">
+                        Watch episodes
+                        <span class="material-symbols-outlined">play_circle</span>
+</button>
+<button class="bg-surface-container-highest/20 backdrop-blur-md text-surface-bright border border-surface-bright/20 px-10 py-5 rounded-lg text-lg font-medium hover:bg-surface-container-highest/40 transition-all">
+                        Explore stories
+                    </button>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-surface-bright/50">
+<span class="text-[0.6rem] uppercase tracking-widest font-manrope">Discover</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-surface-bright/50 to-transparent"></div>
+</div>
+</section>
+<!-- Featured Curator Note (Asymmetrical Content) -->
+<section class="py-32 bg-surface">
+<div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<div class="lg:col-span-7 relative">
+<div class="aspect-[4/5] overflow-hidden rounded-tl-xl rounded-br-xl">
+<img class="w-full h-full object-cover scale-110" data-alt="Artisanal hands weaving intricate dark patterns with organic fibers, dramatic top-down lighting, earthy clay tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpPW4VQOFRF08eMxwbdTLpH-xeG45NYBZdzLmtXXm4hJ8hjwB0xS3rg1H2GPD3TKEGnuzCzsw5YXibhi1pOAwPGCmjk2Sm8LSUvTqgSng-h_0R5YLwgkOdcD64F2kFAMjaKATx93Mo6yYFZr719YRWptqrvgiIAcZ8g0jbyv6lGqpNVCTwm5IsX0nbuJNbCx2TNmGmOrP_YY9C_0QVQUieW1TayaC_W5JQjL3LPrTDHSmLRIxQ4YV7yOXuNYbArISUv1yVMDhgwPs"/>
+</div>
+<div class="absolute -bottom-8 -right-8 lg:right-[-40px] bg-secondary-container p-12 max-w-sm rounded-lg hidden md:block">
+<p class="font-notoSerif text-2xl text-tertiary-container italic leading-relaxed">
+                            "Art is the pulse of our ancestors, re-coded for a world that has yet to arrive."
+                        </p>
+</div>
+</div>
+<div class="lg:col-span-5 flex flex-col items-start lg:pl-12">
+<div class="w-12 h-[2px] bg-secondary mb-8"></div>
+<h2 class="font-notoSerif text-4xl md:text-5xl text-primary mb-8 leading-tight">Preserving the <br/>Ephemeral</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-10 font-manrope font-light">
+                        Art Under the Mango Tree is a digital archive capturing the fleeting moments of cultural brilliance. We navigate the intersections of indigenous craftsmanship and the bleeding edge of technology to curate a vision of the future that honors the soil.
+                    </p>
+<a class="text-secondary font-bold tracking-widest uppercase text-sm flex items-center gap-2 group" href="#">
+                        THE MANIFESTO
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Episode Bento Grid -->
+<section class="py-32 bg-surface-container-low relative">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="text-secondary font-manrope tracking-widest text-xs uppercase mb-4 block">Current Season</span>
+<h2 class="font-notoSerif text-4xl text-primary">Latest Episodes</h2>
+</div>
+<div class="hidden md:flex gap-4">
+<button class="w-12 h-12 rounded-full border border-outline/20 flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 grid-rows-2 gap-6 h-[800px]">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 md:row-span-2 group relative overflow-hidden rounded-xl bg-surface-container-lowest">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Abstract digital projection on traditional architectural forms, vibrant mango yellow and deep forest green lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWgK9UYAdVnL0cb3Spg7xDsYAXkOvlOVEZ4uJLCkvYgOa-sv7GbhN7wXuXU-VpXnd-8EqbwF2Q_PVKNcYihnOpKp1ZFqcGRjxIL6TIOVLp2rQkFvfkxKJRmBfwrDAh09ja2sedxbF26tfbmDx-ELZjpjjWObFXI9jrn0Taj69oO0iE3G-7kPmt0J80WIyRq2o8_9KRwqZNWmULNxF567p6RaP1PyifYzw-wW3s-9tV09prdKAvlJ9oYhv-fuYqK4saEH3mAl0c1OY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
+<div class="absolute bottom-0 p-12 w-full">
+<span class="inline-block px-3 py-1 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-widest mb-4">Featured Episode</span>
+<h3 class="font-notoSerif text-3xl md:text-4xl text-on-primary mb-4">Cyber-Heritage: The Weaver's Code</h3>
+<p class="text-on-primary/70 max-w-lg mb-8 line-clamp-2">In this episode, we visit the northern territories where ancient loom patterns are being translated into generative algorithms for the next century.</p>
+<button class="flex items-center gap-3 text-secondary-container font-bold group-hover:gap-5 transition-all">
+                                WATCH NOW <span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 md:row-span-1 group relative overflow-hidden rounded-xl bg-surface-container-lowest">
+<img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Close up of clay pottery with modern geometric engravings, warm side lighting on textured surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGaVb8RB8BV1RWFRIjjFTWt_V8JB3IAWvibFBBK7G3ua1WjGOCpf10AhLCkYSwwbBQqu-yfG0lx6lW5UKa1EShu5Zz1tFdOR8cD5Fe7W7XukKSmGbOnHcHAgV9EsU2voa5Qljn4X6-YTjH___QmBfeJlXuTCdD9r2iR4xEjAjZL_Ab2GIbr1xluR64fHeCkeie8de98SRQYrPm1sJUuJmBz-X4f9puxxC38m_XCcgxtdogBHRAqSOHO7_vWDHWyZZQG8-joq2kzb4"/>
+<div class="absolute inset-0 bg-primary/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<h3 class="font-notoSerif text-xl text-on-primary">The Earthy Canvas</h3>
+<p class="text-on-primary/60 text-xs mt-2 uppercase tracking-widest">S03 • E12</p>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-4 md:row-span-1 group relative overflow-hidden rounded-xl bg-surface-container-lowest">
+<img class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Lush rainforest landscape with sunlight piercing through thick tropical leaves, misty and atmospheric" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC47s-yeZWhP2NuXLWXNistVUX3KqKSn5UewpTEVa7eySf5nl2ro2enSU1nedTm95jiSIF3tBTN8GMUPyshZosoQjJNxy66ZJxR24ECuOxn_LiolWPNnKHvp0tmZ-IKsgnhON7yiKF-BXLUD29ZM7dPXqhvCyv5eJfPXrL-iF-BLH5NuF-ZbM0i0UEmEdpJN3B_9K4vBQ8CBvjGtPiRp4rhN5v3MY1XRscRsIFJVT7NE3eXZ96F83KP2EW49N9W7WVzFm51TQdTDCc"/>
+<div class="absolute inset-0 bg-primary/40 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<h3 class="font-notoSerif text-xl text-on-primary">The Canopy Echoes</h3>
+<p class="text-on-primary/60 text-xs mt-2 uppercase tracking-widest">S03 • E11</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Footer Call to Action -->
+<section class="py-32 bg-primary relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10">
+<img class="w-full h-full object-cover" data-alt="Close up texture of mango tree bark with moss and intricate natural patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxZBkuNvUmei7685wY0VewRVUvZZBVXCVEponyTS1_qwn2-m6VfcmO17geJXw0EDdrvuza9Ntk0-YdfowFqFGnlO1ZGaFvEdYI_7TVRa48g206fGpfQYsTVru-lai2PeKhL4Dj5zBpUj99t-0S1RJ2zIEI6gVvGvxzKnK2cqDXgED7E3TYp--EYjurfGRsZhU_X-c3pG760i2puFXSXD6Jh7H-dEdLE9tbGCRLmzW6ag-ToSjw2UdnTlD0Ft5EX0mSB_yljEp-opA"/>
+</div>
+<div class="max-w-screen-xl mx-auto px-8 text-center relative z-10">
+<h2 class="font-notoSerif text-4xl md:text-5xl text-on-primary mb-8 leading-tight">Be Part of the Narrative</h2>
+<p class="text-on-primary-container text-lg max-w-2xl mx-auto mb-12">
+                    Subscribe to our curated newsletter. No noise, just the essence of art and evolution delivered to your inbox every full moon.
+                </p>
+<form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
+<input class="flex-grow bg-primary-container/50 border-none text-on-primary rounded-lg px-6 py-4 focus:ring-1 focus:ring-secondary focus:bg-primary-container" placeholder="Your email address" type="email"/>
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-lg font-bold hover:scale-95 transition-transform">
+                        JOIN
+                    </button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="bg-surface dark:bg-primary w-full relative">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full tonal-shift-bg-surface-container-low">
+<div class="mb-10 md:mb-0">
+<div class="font-notoSerif italic text-xl text-on-surface mb-4">Art Under the Mango Tree</div>
+<p class="font-manrope text-sm tracking-widest uppercase text-tertiary dark:text-tertiary-container opacity-80">
+                    © 2024 Art Under the Mango Tree. A Digital Curator Production.
+                </p>
+</div>
+<div class="flex gap-12">
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Instagram</a>
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Vimeo</a>
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Archive</a>
+<a class="font-manrope text-sm tracking-widest uppercase text-on-surface-variant hover:text-secondary-container transition-all opacity-80 hover:opacity-100" href="#">Credits</a>
+</div>
+</div>
+</footer>
+</body></html>
