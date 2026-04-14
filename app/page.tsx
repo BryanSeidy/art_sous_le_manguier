@@ -663,6 +663,61 @@ export default function ArtSousLeManguierApp() {
         </div>
       </section>
 
+      <AnimatePresence>
+        {activeExperience && (
+          <motion.div
+            key="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[120] bg-[#0a0d0c]/70 backdrop-blur-md p-4 md:p-10"
+            onClick={() => setActiveExperience(null)}
+          >
+            <motion.div
+              layoutId={`experience-card-${activeExperience.title}`}
+              className="mx-auto h-full max-w-5xl overflow-auto rounded-[28px] bg-[#f3f4f6] text-[#243831] shadow-[0_20px_90px_rgba(0,0,0,0.45)]"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="relative h-[42vh] min-h-[260px]">
+                <Image src={activeExperience.img} alt={activeExperience.title} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <button
+                  onClick={() => setActiveExperience(null)}
+                  className="absolute right-4 top-4 rounded-full bg-black/45 px-4 py-2 text-xs uppercase tracking-widest text-white"
+                >
+                  Fermer
+                </button>
+                <div className="absolute left-6 bottom-6">
+                  <p className="mono text-[10px] uppercase tracking-[0.25em] text-[#f7f7f7]/80">{activeExperience.tag}</p>
+                  <h3 className="serif text-4xl text-white">{activeExperience.title}</h3>
+                </div>
+              </div>
+              <div className="grid gap-10 p-6 md:grid-cols-[1.6fr_1fr] md:p-10">
+                <div>
+                  <p className="mono mb-4 text-[11px] uppercase tracking-[0.18em] text-[#56655f]">{activeExperience.premiumDestination}</p>
+                  <p className="serif text-2xl md:text-3xl leading-tight mb-6">{activeExperience.subtitle}</p>
+                  <p className="text-base leading-relaxed text-[#40504a]">{activeExperience.premiumStory}</p>
+                </div>
+                <aside className="rounded-2xl border border-[#c5d1cc] bg-white/80 p-6">
+                  <h4 className="mono text-[10px] uppercase tracking-widest text-[#6e7b75] mb-4">Points forts</h4>
+                  <ul className="space-y-3 text-sm text-[#30413a]">
+                    {activeExperience.highlights.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <Sparkles size={14} className="mt-0.5 text-[#30906B]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button className="mt-8 w-full rounded-full border border-[#2f8a66] px-5 py-3 text-xs uppercase tracking-widest text-[#2f8a66] transition-colors hover:bg-[#2f8a66] hover:text-white">
+                    Réserver maintenant
+                  </button>
+                </aside>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <section id="impact" className="relative z-20 bg-[#F4F4F4] py-32 md:py-48 px-6 md:px-12 border-b border-[#B0B0B0]/20">
         <div className="max-w-6xl mx-auto mb-32 border-b border-[#B0B0B0]/30 pb-32">
           <RevealText>
