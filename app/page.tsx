@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { PlayCircle, Sparkles } from 'lucide-react';
 import logoImage from '@/images/ASM-LOGO.jpg';
 import DANGOA from '@/images/DANGOA.png';
 import SoirAuKwatta from '@/images/SOIR AU KWATTA.png';
@@ -236,6 +236,14 @@ type Experience = {
   highlights: string[];
 };
 
+type Episode = {
+  title: string;
+  guest: string;
+  description: string;
+  duration: string;
+  embedUrl: string;
+};
+
 export default function ArtSousLeManguierApp() {
   const heroRef = useRef<HTMLElement | null>(null);
   const transitionRef = useRef<HTMLElement | null>(null);
@@ -250,6 +258,7 @@ export default function ArtSousLeManguierApp() {
   const [viewportSize, setViewportSize] = useState({ width: 1, height: 1 });
   const [pageProgress, setPageProgress] = useState(0);
   const [activeExperience, setActiveExperience] = useState<Experience | null>(null);
+  const [selectedEpisode, setSelectedEpisode] = useState(0);
   const mouseXRatio = Math.min(1, Math.max(0, mouse.x / viewportSize.width));
   const mouseYRatio = Math.min(1, Math.max(0, mouse.y / viewportSize.height));
 
@@ -285,6 +294,30 @@ export default function ArtSousLeManguierApp() {
     { tag: 'Parole', title: 'Awoula Awoula', subtitle: 'La parole comme lien social', desc: 'Des soirées de contes et de récits partagés. Lectures à voix haute, performances de conteurs et échanges intergénérationnels.', img: AwoulaAwoula.src, detail: 'Chaque histoire devient mémoire.', premiumDestination: 'Destination : Kyoto des voix', premiumStory: 'Dans une atmosphère feutrée, les conteurs ouvrent un salon vivant. Les récits passent de génération en génération et transforment l’écoute en expérience collective, délicate et profondément humaine.', highlights: ['Scène conte immersive', 'Lecture à voix haute accompagnée', 'Moment de dialogue intergénérationnel'] },
     { tag: 'Immersion', title: 'Soir au Kwatta', subtitle: 'Immersion artistique multisensorielle', desc: 'Un mélange vibrant de musique, danse, projections et poésie. Un moment suspendu où les arts dialoguent et les émotions circulent.', img: SoirAuKwatta.src, detail: 'Le souffle de la nuit urbaine.', premiumDestination: 'Destination : Kyoto nocturne', premiumStory: 'Musique, danse et images se répondent comme les mouvements d’un même orchestre. La nuit devient une scène où chaque détail — souffle, lumière, rythme — construit une traversée sensorielle rare.', highlights: ['Performance live pluridisciplinaire', 'Projection documentaire immersive', 'Expérience nocturne multi-sens'] },
     { tag: 'Création', title: 'Porteurs de Joie', subtitle: 'L’art participatif au cœur des communautés', desc: 'Ateliers créatifs, installations éphémères et performances interactives. L’espace public devient un terrain de création collective.', img: PorteursDeJoie.src, detail: 'La joie comme acte de résistance.', premiumDestination: 'Destination : Kyoto des gestes partagés', premiumStory: 'Ateliers, installations éphémères et performances composent un terrain d’exploration où chacun devient auteur. Une manière d’habiter la ville autrement, en façonnant un imaginaire commun.', highlights: ['Ateliers de création ouverts', 'Installations éphémères in situ', 'Performances participatives'] },
+  ];
+
+  const episodes: Episode[] = [
+    {
+      title: 'Sous le Manguier — Références vivantes',
+      guest: 'Invitée : Koyo Kouoh',
+      description: 'Conversation sur les référents artistiques africains, la transmission et la mémoire culturelle.',
+      duration: '21 min',
+      embedUrl: 'https://www.youtube.com/embed/aqz-KE-bpKQ',
+    },
+    {
+      title: 'Processus & création contemporaine',
+      guest: 'Invité : Artiste visuel',
+      description: 'Un épisode sur les gestes, les doutes, et les méthodes de création dans le contexte urbain.',
+      duration: '18 min',
+      embedUrl: 'https://www.youtube.com/embed/ysz5S6PUM-U',
+    },
+    {
+      title: 'Archiver pour demain',
+      guest: 'Invité : Curateur',
+      description: 'Pourquoi documenter les voix d’aujourd’hui est un enjeu majeur pour la mémoire collective.',
+      duration: '24 min',
+      embedUrl: 'https://www.youtube.com/embed/jNQXAC9IVRw',
+    },
   ];
 
   return (
@@ -343,7 +376,7 @@ export default function ArtSousLeManguierApp() {
           </span>
         </a>
         <div className={`hidden md:flex gap-8 mono text-[10px] uppercase tracking-widest transition-colors duration-500 ${isAtTop ? 'text-[#30906B]' : 'text-[#F7F7F7] drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]'}`}>
-          {['Vision', 'Expériences', 'Impact'].map((item) => (
+          {['Vision', 'Expériences', 'Episodes', 'Impact'].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} className="hover-trigger cursor-pointer hover:text-white transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-[#F7F7F7] hover:after:w-full after:transition-all after:duration-300">{item}</a>
           ))}
         </div>
@@ -510,6 +543,122 @@ export default function ArtSousLeManguierApp() {
                 </div>
               </motion.article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <AnimatePresence>
+        {activeExperience && (
+          <motion.div
+            key="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[120] bg-[#0a0d0c]/70 backdrop-blur-md p-4 md:p-10"
+            onClick={() => setActiveExperience(null)}
+          >
+            <motion.div
+              layoutId={`experience-card-${activeExperience.title}`}
+              className="mx-auto h-full max-w-5xl overflow-auto rounded-[28px] bg-[#f3f4f6] text-[#243831] shadow-[0_20px_90px_rgba(0,0,0,0.45)]"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <div className="relative h-[42vh] min-h-[260px]">
+                <Image src={activeExperience.img} alt={activeExperience.title} fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <button
+                  onClick={() => setActiveExperience(null)}
+                  className="absolute right-4 top-4 rounded-full bg-black/45 px-4 py-2 text-xs uppercase tracking-widest text-white"
+                >
+                  Fermer
+                </button>
+                <div className="absolute left-6 bottom-6">
+                  <p className="mono text-[10px] uppercase tracking-[0.25em] text-[#f7f7f7]/80">{activeExperience.tag}</p>
+                  <h3 className="serif text-4xl text-white">{activeExperience.title}</h3>
+                </div>
+              </div>
+              <div className="grid gap-10 p-6 md:grid-cols-[1.6fr_1fr] md:p-10">
+                <div>
+                  <p className="mono mb-4 text-[11px] uppercase tracking-[0.18em] text-[#56655f]">{activeExperience.premiumDestination}</p>
+                  <p className="serif text-2xl md:text-3xl leading-tight mb-6">{activeExperience.subtitle}</p>
+                  <p className="text-base leading-relaxed text-[#40504a]">{activeExperience.premiumStory}</p>
+                </div>
+                <aside className="rounded-2xl border border-[#c5d1cc] bg-white/80 p-6">
+                  <h4 className="mono text-[10px] uppercase tracking-widest text-[#6e7b75] mb-4">Points forts</h4>
+                  <ul className="space-y-3 text-sm text-[#30413a]">
+                    {activeExperience.highlights.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <Sparkles size={14} className="mt-0.5 text-[#30906B]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button className="mt-8 w-full rounded-full border border-[#2f8a66] px-5 py-3 text-xs uppercase tracking-widest text-[#2f8a66] transition-colors hover:bg-[#2f8a66] hover:text-white">
+                    Réserver maintenant
+                  </button>
+                </aside>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <section id="episodes" className="relative z-20 bg-[#0f1714] text-[#f2f5f4] py-24 md:py-32 px-6 md:px-12 border-b border-white/10">
+        <div className="max-w-7xl mx-auto">
+          <RevealText>
+            <div className="mb-10 md:mb-14">
+              <p className="mono text-[10px] uppercase tracking-[0.25em] text-[#b8c8c0] mb-4">Épisodes vidéo ASM</p>
+              <h2 className="serif text-4xl md:text-6xl leading-tight">Regarder les voix qui construisent la mémoire.</h2>
+            </div>
+          </RevealText>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.95fr] gap-8 lg:gap-10 items-start">
+            <motion.div
+              key={selectedEpisode}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7 }}
+              className="rounded-[24px] overflow-hidden border border-white/15 bg-black/40 shadow-[0_20px_70px_rgba(0,0,0,0.45)]"
+            >
+              <div className="aspect-video">
+                <iframe
+                  className="h-full w-full"
+                  src={episodes[selectedEpisode].embedUrl}
+                  title={episodes[selectedEpisode].title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+              <div className="p-6 md:p-8">
+                <p className="mono text-[10px] uppercase tracking-[0.2em] text-[#9fb4ab] mb-3">{episodes[selectedEpisode].guest} · {episodes[selectedEpisode].duration}</p>
+                <h3 className="serif text-2xl md:text-3xl mb-4">{episodes[selectedEpisode].title}</h3>
+                <p className="text-[#d2ddd8] leading-relaxed">{episodes[selectedEpisode].description}</p>
+              </div>
+            </motion.div>
+
+            <div className="space-y-4">
+              {episodes.map((episode, index) => (
+                <button
+                  key={episode.title}
+                  onClick={() => setSelectedEpisode(index)}
+                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-400 group ${
+                    selectedEpisode === index
+                      ? 'bg-[#1f2f29] border-[#5f8578] shadow-[0_14px_40px_rgba(20,38,31,0.55)]'
+                      : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.08] hover:border-white/25'
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <PlayCircle className={`mt-0.5 shrink-0 ${selectedEpisode === index ? 'text-[#8fd8b9]' : 'text-[#c3d3cc] group-hover:text-[#f2f5f4]'}`} size={20} />
+                    <div>
+                      <p className="mono text-[10px] uppercase tracking-[0.2em] text-[#9fb4ab] mb-2">{episode.guest}</p>
+                      <p className="serif text-xl leading-snug mb-2">{episode.title}</p>
+                      <p className="text-sm text-[#d0d9d5] line-clamp-2">{episode.description}</p>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
