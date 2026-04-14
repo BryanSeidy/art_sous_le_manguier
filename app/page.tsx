@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { PlayCircle, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Leaf, PlayCircle, Sparkles } from 'lucide-react';
 import logoImage from '@/images/ASM-LOGO.jpg';
 import DANGOA from '@/images/DANGOA.png';
 import SoirAuKwatta from '@/images/SOIR AU KWATTA.png';
@@ -244,6 +244,19 @@ type Episode = {
   embedUrl: string;
 };
 
+type ProjectHighlight = {
+  title: string;
+  format: string;
+  status: string;
+  synopsis: string;
+};
+
+type AboutPillar = {
+  label: string;
+  title: string;
+  detail: string;
+};
+
 export default function ArtSousLeManguierApp() {
   const heroRef = useRef<HTMLElement | null>(null);
   const transitionRef = useRef<HTMLElement | null>(null);
@@ -317,6 +330,45 @@ export default function ArtSousLeManguierApp() {
       description: 'Pourquoi documenter les voix d’aujourd’hui est un enjeu majeur pour la mémoire collective.',
       duration: '24 min',
       embedUrl: 'https://www.youtube.com/embed/jNQXAC9IVRw',
+    },
+  ];
+
+  const projectHighlights: ProjectHighlight[] = [
+    {
+      title: 'Résidences sous le manguier',
+      format: 'Projet collectif',
+      status: 'En préparation',
+      synopsis: 'Cycle de résidences mêlant vidéo, archives orales et interventions in situ pour créer des récits de quartier.',
+    },
+    {
+      title: 'Archives parlées ASM',
+      format: 'Recherche & média',
+      status: 'Saison 2026',
+      synopsis: 'Collecte et indexation de témoignages vidéo pour structurer une mémoire vivante accessible aux jeunes créateurs.',
+    },
+    {
+      title: 'Studio mobile des palabres',
+      format: 'Laboratoire itinérant',
+      status: 'Déploiement',
+      synopsis: 'Dispositif audiovisuel léger pour filmer des conversations locales et produire des épisodes en temps court.',
+    },
+  ];
+
+  const aboutPillars: AboutPillar[] = [
+    {
+      label: 'Mission',
+      title: 'Créer des rencontres qui laissent une trace.',
+      detail: 'Chaque épisode est conçu comme un acte de transmission entre artistes, habitants et nouvelles générations.',
+    },
+    {
+      label: 'Méthode',
+      title: 'Une direction curatoriale + une production locale.',
+      detail: 'Nous articulons narration éditoriale, captation immersive et circulation des contenus dans les espaces du quotidien.',
+    },
+    {
+      label: 'Impact',
+      title: 'Du contenu qui devient outil culturel.',
+      detail: 'Les formats vidéo servent à documenter, inspirer et activer des projets artistiques concrets sur le terrain.',
     },
   ];
 
@@ -602,16 +654,27 @@ export default function ArtSousLeManguierApp() {
         )}
       </AnimatePresence>
 
-      <section id="episodes" className="relative z-20 bg-[#0f1714] text-[#f2f5f4] py-24 md:py-32 px-6 md:px-12 border-b border-white/10">
+      <section id="episodes" className="relative z-20 bg-[radial-gradient(circle_at_top,#1f332b_0%,#0d1512_55%,#090f0d_100%)] text-[#f2f5f4] py-24 md:py-32 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <RevealText>
-            <div className="mb-10 md:mb-14">
-              <p className="mono text-[10px] uppercase tracking-[0.25em] text-[#b8c8c0] mb-4">Épisodes vidéo ASM</p>
-              <h2 className="serif text-4xl md:text-6xl leading-tight">Regarder les voix qui construisent la mémoire.</h2>
+            <div className="mb-10 md:mb-16 grid gap-8 lg:grid-cols-[1.35fr_0.65fr] items-end">
+              <div>
+                <p className="mono text-[10px] uppercase tracking-[0.25em] text-[#b8c8c0] mb-4">Cinémathèque ASM · Episodes / Projets / About</p>
+                <h2 className="serif text-4xl md:text-6xl leading-tight">Une présentation éditoriale pour regarder, comprendre et agir.</h2>
+                <p className="mt-6 max-w-2xl text-[#d6e1dc]/90 leading-relaxed">Inspirée du design stitch, cette section relie les épisodes, les projets en cours et la vision du collectif dans une même narration immersive.</p>
+              </div>
+              <div className="rounded-[24px] bg-white/[0.04] border border-white/10 p-6 backdrop-blur-lg">
+                <p className="mono text-[10px] uppercase tracking-[0.2em] text-[#9fb4ab] mb-3">Navigation curatoriale</p>
+                <div className="space-y-2 text-sm text-[#eaf0ed]">
+                  <p>01 · Épisodes en lecture active</p>
+                  <p>02 · Projets au format carte</p>
+                  <p>03 · About structuré par piliers</p>
+                </div>
+              </div>
             </div>
           </RevealText>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_0.95fr] gap-8 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 xl:grid-cols-[1.3fr_0.9fr] gap-8 lg:gap-10 items-start">
             <motion.div
               key={selectedEpisode}
               initial={{ opacity: 0, y: 14 }}
@@ -637,28 +700,67 @@ export default function ArtSousLeManguierApp() {
               </div>
             </motion.div>
 
-            <div className="space-y-4">
-              {episodes.map((episode, index) => (
-                <button
-                  key={episode.title}
-                  onClick={() => setSelectedEpisode(index)}
-                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-400 group ${
-                    selectedEpisode === index
-                      ? 'bg-[#1f2f29] border-[#5f8578] shadow-[0_14px_40px_rgba(20,38,31,0.55)]'
-                      : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.08] hover:border-white/25'
-                  }`}
-                >
-                  <div className="flex items-start gap-4">
-                    <PlayCircle className={`mt-0.5 shrink-0 ${selectedEpisode === index ? 'text-[#8fd8b9]' : 'text-[#c3d3cc] group-hover:text-[#f2f5f4]'}`} size={20} />
-                    <div>
-                      <p className="mono text-[10px] uppercase tracking-[0.2em] text-[#9fb4ab] mb-2">{episode.guest}</p>
-                      <p className="serif text-xl leading-snug mb-2">{episode.title}</p>
-                      <p className="text-sm text-[#d0d9d5] line-clamp-2">{episode.description}</p>
+            <div className="space-y-7">
+              <div className="space-y-4">
+                {episodes.map((episode, index) => (
+                  <button
+                    key={episode.title}
+                    onClick={() => setSelectedEpisode(index)}
+                    className={`w-full text-left p-5 rounded-2xl border transition-all duration-400 group ${
+                      selectedEpisode === index
+                        ? 'bg-[#1f2f29] border-[#5f8578] shadow-[0_14px_40px_rgba(20,38,31,0.55)]'
+                        : 'bg-white/[0.03] border-white/10 hover:bg-white/[0.08] hover:border-white/25'
+                    }`}
+                  >
+                    <div className="flex items-start gap-4">
+                      <PlayCircle className={`mt-0.5 shrink-0 ${selectedEpisode === index ? 'text-[#8fd8b9]' : 'text-[#c3d3cc] group-hover:text-[#f2f5f4]'}`} size={20} />
+                      <div>
+                        <p className="mono text-[10px] uppercase tracking-[0.2em] text-[#9fb4ab] mb-2">{episode.guest}</p>
+                        <p className="serif text-xl leading-snug mb-2">{episode.title}</p>
+                        <p className="text-sm text-[#d0d9d5] line-clamp-2">{episode.description}</p>
+                      </div>
                     </div>
-                  </div>
-                </button>
-              ))}
+                  </button>
+                ))}
+              </div>
+
+              <div className="rounded-[24px] bg-[#f6f3eb] text-[#243831] p-6 md:p-7">
+                <p className="mono text-[10px] uppercase tracking-[0.2em] text-[#65746e] mb-5">Projects</p>
+                <div className="space-y-4">
+                  {projectHighlights.map((project, index) => (
+                    <article key={project.title} className={`rounded-[18px] p-4 ${index === 1 ? 'bg-[#e9e4d7]' : 'bg-[#efece2]'}`}>
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="mono text-[10px] uppercase tracking-[0.18em] text-[#5f6f68]">{project.format}</p>
+                          <h4 className="serif text-xl leading-tight mt-2">{project.title}</h4>
+                        </div>
+                        <span className="mono text-[10px] uppercase tracking-[0.18em] text-[#2c5445]">{project.status}</span>
+                      </div>
+                      <p className="mt-3 text-sm text-[#40504a] leading-relaxed">{project.synopsis}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="mt-10 md:mt-12 grid gap-5 md:grid-cols-3">
+            {aboutPillars.map((pillar, index) => (
+              <article key={pillar.label} className={`rounded-[22px] p-6 md:p-7 ${index === 1 ? 'bg-[#183128]/85' : 'bg-white/[0.05]'} border border-white/10`}>
+                <div className="flex items-center justify-between">
+                  <p className="mono text-[10px] uppercase tracking-[0.18em] text-[#9fb4ab]">{pillar.label}</p>
+                  {index === 1 ? <ArrowUpRight size={16} className="text-[#9ce0c1]" /> : <Leaf size={16} className="text-[#9ce0c1]" />}
+                </div>
+                <h3 className="serif text-2xl mt-4 leading-tight">{pillar.title}</h3>
+                <p className="mt-4 text-sm text-[#d0dad6] leading-relaxed">{pillar.detail}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-7 flex flex-wrap gap-3 text-xs text-[#bdd1c8]">
+            <span className="rounded-full bg-white/[0.06] px-4 py-2 border border-white/10">About</span>
+            <span className="rounded-full bg-white/[0.06] px-4 py-2 border border-white/10">Archive vidéo</span>
+            <span className="rounded-full bg-white/[0.06] px-4 py-2 border border-white/10">Narration éditoriale</span>
           </div>
         </div>
       </section>
